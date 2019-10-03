@@ -1,7 +1,7 @@
 # systems-work
-# Kazi Jamal's Work for Systems Level Programming
+# Kazi Jamal's Work and Notes for Systems Level Programming
 
-## System Level Programming Notes October 3
+## 10/03/19
 
 ### Java
 - .java -> .class -> JVM -> OS -> hardware

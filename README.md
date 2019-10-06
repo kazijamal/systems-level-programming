@@ -1,6 +1,4 @@
 # systems-work
-# Kazi Jamal's Work and Notes for Systems Level Programming
-
 ## Friday 10/4/19 
 
 ### Primitive Types and Byte Size

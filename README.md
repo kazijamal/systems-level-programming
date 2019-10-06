@@ -22,18 +22,19 @@
 
 ### CPU
 - things go into a CPU (instructions or data)
-    - instructions (e.g. add next two values to come in, copy next value to memory location)
-    - several inputs are fed in at once/all read at same time 
-    - each input is a bit
-    - as standard, 64 bits (8 bytes) come in at a time 
+  - instructions (e.g. add next two values to come in, copy next value to memory location)
+  - several inputs are fed in at once/all read at same time 
+  - each input is a bit
+  - as standard, 64 bits (8 bytes) come in at a time 
+    
 - CPU outputs a result
-    - 2 gigahertz CPU - runs 2 billion cycles per second
+  - 2 gigahertz CPU - runs 2 billion cycles per second
 
 - processor must be able to read memory address in one input 
-    - thus pointers are 8 bytes in 64 bit processer machines 
-    - size of the pointer will depend on the size of the processing available 
-    - running same program on different computers may result in different pointer sizes 
-    - there are 2^64 theoretical memory addresses 
+  - thus pointers are 8 bytes in 64 bit processer machines 
+  - size of the pointer will depend on the size of the processing available    
+  - running same program on different computers may result in different pointer sizes 
+  - there are 2^64 theoretical memory addresses 
 
 ```
 int x; // in memory, x refers to a 4 byte chunk (for example purposes, the address is 2000)

@@ -1,5 +1,5 @@
 # systems-work
-## Friday 10/4/19 
+## Friday 10/04/19 
 
 ### Primitive Types and Byte Size
 | Primitives | Byte Size |

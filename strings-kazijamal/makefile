@@ -6,3 +6,10 @@ main.o: main.c header.h
 
 fxn.o: fxn.c
 	gcc -c fxn.c
+
+run:
+	./program
+
+clean:
+	rm *.o
+	rm *~

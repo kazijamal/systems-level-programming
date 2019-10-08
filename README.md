@@ -1,4 +1,53 @@
 # systems-work
+
+## Tuesday 10/08/19
+
+### Make
+- tool to make executables
+- works with any language
+- just an automation tool, can be used for other things
+- javac creates byte code or binary code which is then run by the jvm (not an executable)
+- automates checking of dependencies and makes working with multi file programs easier
+
+### makefile
+- only recompiles modified files
+- good practices
+  - make a separate compilation step for each .c file with .o as the target
+    - dependencies should only be the .c file and its corresponding hearders or .h files
+  - dependencies of the all target should be all of the .o files
+  - have targets that serve similar purposes to run and clean
+- example
+```
+all: main.o fxn.o
+        gcc -o program main.o fxn.o
+
+main.o: main.c header.h
+        gcc -c main.c
+
+fxn.o: fxn.c
+        gcc -c fxn.c
+
+run:
+        ./program
+
+clean:
+        rm *.o
+	rm program
+        rm *~
+```
+
+### typedef
+- a way to provide a new name for an existing type
+- adjusts pointer types on different machines, meaning you do not have to rewrite the file for different systems
+  - being defined for different systems helps portability
+- helps with readability and the new name can be more descriptive than the existing name
+- eg. size_t is a different name for an unsigned long
+```c
+typedef real_type new_name;
+typedef unsigned long size_t;
+size_t x = 139; // x is really an unsigned long
+```
+
 ## Friday 10/04/19 
 
 ### Primitive Types and Byte Size

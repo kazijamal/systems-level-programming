@@ -1,5 +1,18 @@
 # systems-work
 
+## Thursday 10/10/19
+
+### typedef
+- a way to provide a new name for an existing type
+- this can be useful so that the same source code is portable to different systems
+- also makes the source code more readable with more descriptive new names
+- eg. size_t is a different name for an unsigned long
+```c
+typedef real_type new_name;
+typedef unsigned long size_t;
+size_t x = 139; // x is really an unsigned long
+```
+
 ## Tuesday 10/08/19
 
 ### Make
@@ -34,18 +47,6 @@ clean:
         rm *.o
 	rm program
         rm *~
-```
-
-### typedef
-- a way to provide a new name for an existing type
-- adjusts pointer types on different machines, meaning you do not have to rewrite the file for different systems
-  - being defined for different systems helps portability
-- helps with readability and the new name can be more descriptive than the existing name
-- eg. size_t is a different name for an unsigned long
-```c
-typedef real_type new_name;
-typedef unsigned long size_t;
-size_t x = 139; // x is really an unsigned long
 ```
 
 ## Friday 10/04/19 

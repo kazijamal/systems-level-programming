@@ -15,7 +15,7 @@ size_t x = 139; // x is really an unsigned long
 
 ## Tuesday 10/08/19
 
-### Make
+### make
 - tool to make executables
 - works with any language
 - just an automation tool, can be used for other things

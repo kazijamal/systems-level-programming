@@ -1,5 +1,33 @@
 # systems-work
 
+## Tuesday 10/15/19
+
+### Struct
+- create a new type that is a collection of values
+```c
+struct { int a; char x; } s;
+```
+- here, s is a variable of type ```struct {int a; char x; }```
+- we use the . operator to access a value inside a struct
+```c
+s.a = 10;
+s.x = '@';
+```
+- the size of the struct does not have to equal to the sum of the sizes of its values
+```c
+struct foo { int a; char x; }; // struct prototype
+```
+- struct prototypes make it easier to create multiple variables of the same type, and also helps with interaction between those variables
+- normally structs are declared outside of the main function or in header files to increase scope
+- . binds before * (dot operator has precedence over dereference operator)
+- to access data from a struct pointer you would do:
+```c
+struct foo *p;
+p = &s;
+(*p).x;
+p->x; // c shorthand for (*p).x
+```
+
 ## Thursday 10/10/19
 
 ### typedef

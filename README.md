@@ -1,7 +1,7 @@
 # mks65-construction
 
 ## Work 02: Construction
-For some notes on structs: [https://github.com/mks65/lessons/blob/master/17_struct.md]
+For some notes on structs: https://github.com/mks65/lessons/blob/master/17_struct.md
 - Create a struct that has at least 2 data members, one must be a string.
   - You can provide struct prototypes outside of functions.
   - Don't just combine random things, make it meaningful (like food and price, athlete and associated statistic, Pokemon and something about Pokemon ..)

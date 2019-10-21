@@ -1,5 +1,20 @@
 # systems-work
 
+## Monday 10/21/19
+
+### Stack memory vs Heap memory
+- every program can have its own stack and heap
+
+### Stack Memory
+- stores all normally declared variables (including pointers and structs), arrays and function calls
+- functions are pushed onto the stack in the order they are called, and popped off when completed
+- when a function is popped off the stack, the stack memory associated with it is released
+
+### Heap Memory
+- stores dynamically allocated memory
+	- dynamically allocated memory is allocated at runtime
+- data will remain in the heap until it is manually released (or the program terminates)
+
 ## Tuesday 10/15/19
 
 ### Struct
@@ -9,7 +24,7 @@ struct { int a; char x; } s;
 ```
 - here, s is a variable of type ```struct {int a; char x; }```
 - we use the . operator to access a value inside a struct
-```c
+```cnew
 s.a = 10;
 s.x = '@';
 ```
@@ -19,7 +34,7 @@ struct foo { int a; char x; }; // struct prototype
 ```
 - struct prototypes make it easier to create multiple variables of the same type, and also helps with interaction between those variables
 - normally structs are declared outside of the main function or in header files to increase scope
-- . binds before * (dot operator has precedence over dereference operator)
+- . binds before * (dot operator has precedence newover dereference operator)
 - to access data from a struct pointer you would do:
 ```c
 struct foo *p;
@@ -49,12 +64,12 @@ size_t x = 139; // x is really an unsigned long
 - just an automation tool, can be used for other things
 - javac creates byte code or binary code which is then run by the jvm (not an executable)
 - automates checking of dependencies and makes working with multi file programs easier
-
+new
 ### makefile
 - only recompiles modified files
 - good practices
   - make a separate compilation step for each .c file with .o as the target
-    - dependencies should only be the .c file and its corresponding hearders or .h files
+    - dependencies should only be the .c file and its corresponding headers or .h files
   - dependencies of the all target should be all of the .o files
   - have targets that serve similar purposes to run and clean
 - example

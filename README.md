@@ -1,5 +1,32 @@
 # systems-work
 
+## Tuesday 10/22/19
+
+### Dynamic memory allocation
+#### malloc
+```c
+malloc(site_t x)
+```
+- allocates x bytes of heap memory
+- returns the address at the beginning of the allocation
+- returns a `void *`
+```c
+int *p;
+p = malloc(5 * sizeof(int));
+```
+#### free
+```c
+free(void * p)
+```
+- releases dynamically allocated memory
+- has one parameter, a pointer to the beginning ofa  dynamically allocated block of memory
+- every call to `malloc` or `calloc` should have a corresponding call to `free`
+#### calloc
+```c
+calloc(site_t n, size_t x)
+```
+- allocates n * x bytes of memory, ensuring every bit is 0
+
 ## Monday 10/21/19
 
 ### Stack memory vs Heap memory
@@ -22,9 +49,9 @@
 ```c
 struct { int a; char x; } s;
 ```
-- here, s is a variable of type ```struct {int a; char x; }```
+- here, s is a variable of type `struct {int a; char x; }`
 - we use the . operator to access a value inside a struct
-```cnew
+```c
 s.a = 10;
 s.x = '@';
 ```

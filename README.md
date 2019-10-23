@@ -1,5 +1,25 @@
 # systems-work
 
+# Wednesday 10/23/19
+
+#### calloc
+```c
+calloc(site_t n, size_t x)
+```
+- allocates n * x bytes of memory, ensuring every bit is 0
+
+#### realloc
+```c
+realloc(void *p, size_t x)
+```
+- changes the amount of memory allocated for a block to `x` bytes
+- `p` must point to the beginning of a block
+- returns a pointer to the beginning of the block (this is not always the same as `p`)
+- if `x` is smaller than the original size of the allocation, the extra bytes will be released
+- if `x` is larger than the original size then either:
+	1. if there is enough space at the end of the original allocation, the original allocation will be updated
+	2. if there is not enough space, a new allocation will be created, containing all the original values; the original allocation will be freed
+
 ## Tuesday 10/22/19
 
 ### Dynamic memory allocation
@@ -21,11 +41,6 @@ free(void * p)
 - releases dynamically allocated memory
 - has one parameter, a pointer to the beginning ofa  dynamically allocated block of memory
 - every call to `malloc` or `calloc` should have a corresponding call to `free`
-#### calloc
-```c
-calloc(site_t n, size_t x)
-```
-- allocates n * x bytes of memory, ensuring every bit is 0
 
 ## Monday 10/21/19
 

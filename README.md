@@ -12,3 +12,5 @@ For some notes on structs: https://github.com/mks65/lessons/blob/master/17_struc
 - Write a main function that tests all these things.
   - Have meaningful output.
 - DONT FORGET A MAKEFILE
+
+GitHub clone link: https://github.com/mks65/construction.git

@@ -1,13 +1,42 @@
 # systems-work
 
+## Thursday 10/24/19
+
+### Get 'Dem Bugs
+#### GDB - GNU DeBugger
+- to use gdb, you must compile using the -g flag with gcc
+- basic usage: 
+```sh
+$ gdb program
+```
+- this starts a gdb shell from which you can run your program
+- commands from in the gdb shell:
+	- `run`: runs the program until it ends/crashes/gets a signal
+	- `list`: show the lines of code run around a crash
+	- `print var`: print the value of `var`
+	- `backtrace`: show the current stack
+	- `break line number`: creates breakpoint at a line
+- running a program in pieces
+	- `run`: restarts the program
+	- `continue`: run the program until the next breakpoint/crash/end
+	- `next`: run the next line of the program only
+	- `step`: run the next lne of the program, if that is a funcxtion call, run only the next line of that function
+#### Valgrind
+- tool for debugging memory issues in C programs
+- you must compile with -g in order to use valgrind (and similar tools)
+- usage:
+```sh
+$ valgrind --leak-check=yes ./program
+```
+
 ## Wednesday 10/23/19
 
+### Dynamic Memory Allocation continued
 #### calloc
 ```c
 calloc(site_t n, size_t x)
 ```
 - allocates n * x bytes of memory, ensuring every bit is 0
-
 #### realloc
 ```c
 realloc(void *p, size_t x)
@@ -22,7 +51,7 @@ realloc(void *p, size_t x)
 
 ## Tuesday 10/22/19
 
-### Dynamic memory allocation
+### Dynamic Memory Allocation
 #### malloc
 ```c
 malloc(site_t x)

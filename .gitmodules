@@ -13,3 +13,6 @@
 [submodule "array-swap"]
 	path = array-swap
 	url = git@github.com:mks65/array-swap-kazijamal.git
+[submodule "list"]
+	path = list
+	url = git@github.com:kazijamal/mks65-list.git

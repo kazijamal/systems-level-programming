@@ -22,9 +22,13 @@ struct node * free_list(struct node * n) {
   while (n != NULL) {
     printf("freeing node: %d\n", n->i);
     struct node * currentNode = n;
+    n = n->next;
     free(currentNode);
     currentNode = NULL;
-    n = n->next;
   }
   return n;
+}
+
+struct node * myRemove(struct node * front, int data) {
+  
 }

@@ -11,6 +11,6 @@ run:
 	./test_list
 
 clean:
-	rm test_list
 	rm *.o
+	rm test_list
 	rm *~

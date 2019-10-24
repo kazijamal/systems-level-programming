@@ -16,7 +16,11 @@ Create the following functions:
   - The second argument should match whatever data you contain in your nodes.
   - Returns a pointer to the beginning of the list.
 - `struct node * free_list(struct node *);`
-  - Should take a pointer to a list as a parameter and then go through the entire list freeing each node and return a pointer to the beginning of the list (which should be NULL by then).  
+  - Should take a pointer to a list as a parameter and then go through the entire list freeing each node and return a pointer to the beginning of the list (which should be NULL by then).
+-struct node * remove(struct node *front, int data);
+  - Remove the node containing data from the list pointed to by front.
+  - If data is not in the list, nothing is changed.
+  - Returns a pointer to the beginning of the list.
 - Your list functions should be in a .c/.h library, with a separate .c file used for testing.              
 Don't forget to test out these various functions to ensure they work correctly. (Just to be clear, when you run the program and get "Segmentation fault" that means it's not working.). Here is a sample run that shows things being tested:
 

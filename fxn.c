@@ -30,5 +30,17 @@ struct node * free_list(struct node * n) {
 }
 
 struct node * myRemove(struct node * front, int data) {
-  
+  struct node * current = front;
+  struct node * next = current->next;
+  while (next != NULL) {
+    if (next->i == data) {
+      current->next = next->next;
+      free(next);
+      next = NULL;
+      return front;
+    }
+    current = next;
+    next = next->next;
+  }
+  return front;
 }

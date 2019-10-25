@@ -10,6 +10,8 @@ int main() {
   printf("Printing empty list:\n");
   print_list(testList);
 
+  printf("\n");
+
   // testing insert_front()
   printf("Adding #s 0-9 to list.\n");
   int i;
@@ -19,6 +21,15 @@ int main() {
   printf("Printing list:\n");
   print_list(testList);
 
+  printf("\n");
+  
+  // testing myRemove()
+  printf("Removing 5 from list.\n");
+  myRemove(testList, 5);
+  print_list(testList);
+
+  printf("\n");
+  
   // testing free_list
   printf("Freeing list:\n");
   testList = free_list(testList);

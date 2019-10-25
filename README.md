@@ -6,7 +6,7 @@
 #### GDB - GNU DeBugger
 - to use gdb, you must compile using the -g flag with gcc
 - basic usage: 
-```sh
+```console
 $ gdb program
 ```
 - this starts a gdb shell from which you can run your program
@@ -25,7 +25,7 @@ $ gdb program
 - tool for debugging memory issues in C programs
 - you must compile with -g in order to use valgrind (and similar tools)
 - usage:
-```sh
+```console
 $ valgrind --leak-check=yes ./program
 ```
 

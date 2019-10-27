@@ -35,6 +35,7 @@ struct node * remove_node(struct node * front, int data) {
   if (current->i == data) {
     front = front->next;
     free(current);
+    current = NULL;
     return front;
   }
   while (current->next != NULL) {

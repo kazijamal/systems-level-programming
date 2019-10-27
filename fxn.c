@@ -29,18 +29,22 @@ struct node * free_list(struct node * n) {
   return n;
 }
 
-struct node * remove2_node(struct node * front, int data) {
+struct node * remove_node(struct node * front, int data) {
   struct node * current = front;
-  struct node * previous = NULL;
-  while (current != NULL) {
-    if (current->i == data) {
-      struct node * removeNode = current;
-      if (previous == NULL) front = front->next;
-      else previous->next = removeNode->next;
+  if (current == NULL) return front;
+  if (current->i == data) {
+    front = front->next;
+    free(current);
+    current = NULL;
+    return front;
+  }
+  while (current->next != NULL) {
+    if (current->next->i == data) {
+      struct node* removeNode = current->next;
+      current->next = removeNode->next;
       free(removeNode);
-      removeNode = NULL;
+      return front;
     }
-    previous = current;
     current = current->next;
   }
   return front;

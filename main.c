@@ -22,21 +22,21 @@ int main() {
 
   printf("\n");
   
-  // testing myRemove()
+  // testing remove_node()
   printf("Removing 5 from list.\n");
-  remove_node(testList, 5);
+  testList = remove_node(testList, 5);
   print_list(testList);
 
   printf("\n");
   
   printf("Removing 9 from list.\n");
-  remove_node(testList, 9);
+  testList = remove_node(testList, 9);
   print_list(testList);
 
   printf("\n");
   
   printf("Removing 10 from list.\n");
-  remove_node(testList, 10);
+  testList = remove_node(testList, 10);
   print_list(testList);
 
   printf("\n");

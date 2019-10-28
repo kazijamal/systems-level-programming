@@ -1,5 +1,23 @@
 # systems-work
 
+## Monday 10/28/19
+
+### makefile updates
+#### variables
+```
+CC = gcc -g			sets the value of the variable CC
+$(CC)				returns the value of the variable CC
+```
+#### conditional statements
+```
+ifeq ($(DEBUG), true)		if the DEBUG variable equals true
+	CC = gcc -g
+else
+	CC = gcc
+endif
+```
+- this lets the user do `make DEBUG=true`
+
 ## Thursday 10/24/19
 
 ### Get 'Dem Bugs

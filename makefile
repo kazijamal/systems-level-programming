@@ -1,11 +1,17 @@
+ifeq ($(DEBUG), true)
+	CC = gcc -g
+else
+	CC = gcc
+endif
+
 all: main.o fxn.o
-	gcc -o test_list main.o fxn.o
+	$(CC) -o test_list main.o fxn.o
 
 main.o: main.c header.h
-	gcc -c -g main.c
+	$(CC) -c main.c
 
 fxn.o: fxn.c header.h
-	gcc -c -g fxn.c
+	$(CC) -c fxn.c
 
 run:
 	./test_list

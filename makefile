@@ -18,8 +18,7 @@ run:
 
 clean:
 	rm *.o
-	rm test_list
 	rm *~
 
-valgrind:
+memcheck:
 	valgrind --leak-check=yes ./test_list

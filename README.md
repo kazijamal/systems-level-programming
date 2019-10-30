@@ -4,12 +4,12 @@
 
 ### makefile updates
 #### variables
-```
+```make
 CC = gcc -g			sets the value of the variable CC
 $(CC)				returns the value of the variable CC
 ```
 #### conditional statements
-```
+```make
 ifeq ($(DEBUG), true)		if the DEBUG variable equals true
 	CC = gcc -g
 else

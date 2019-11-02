@@ -18,5 +18,13 @@ int main() {
   list = insert_ordered(list, "another song", "black eyed peas");
   print_list(list);
 
+  printf("testing adds to end if greater artist");
+  list = insert_ordered(list, "the end", "minecraft");
+  print_list(list);
+
+  printf("testing adds to end if same artist, greater song");
+  list = insert_ordered(list, "the end?", "minecraft");
+  print_list(list);
+
   return 0;
 }

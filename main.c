@@ -48,19 +48,19 @@ int main() {
   print_list(list);
 
   printf("testing artist not found in beginning\n");
-  found = find(list, "acdc");
+  found = find_artist_first(list, "acdc");
   print_list(found);
 
   printf("testing artist not found in middle\n");
-  found = find(list, "downstait");
+  found = find_artist_first(list, "downstait");
   print_list(found);
 
   printf("testing artist not found in end\n");
-  found = find(list, "zz top");
+  found = find_artist_first(list, "zz top");
   print_list(list);
 
   printf("testing found artist first song\n");
-  found = find(list, "dua lipa");
+  found = find_artist_first(list, "dua lipa");
   print_list(found->name);
 
   return 0;

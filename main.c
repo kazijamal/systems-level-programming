@@ -7,7 +7,7 @@ int main() {
   print_list(list);
 
   printf("testing adds to null list");
-  list = insert_ordered(list, "no games", "dua lipa");
+  list = insert_ordered(list, "no goodbyes", "dua lipa");
   print_list(list);
 
   printf("testing adds to front if 1st node has greater artist");
@@ -32,6 +32,18 @@ int main() {
 
   printf("add a dua lipa song for future testing");
   list = insert_ordered(list, "idgaf", "dua lipa");
+  print_list(list);
+
+  printf("testing adds song in right place (middle)");
+  list = insert_ordered(list, "new rules", "dua lipa");
+  print_list(list);
+
+  printf("testing adds song in right place (beginning)");
+  list = insert_ordered(list, "be the one", "dua lipa");
+  print_list(list);
+
+  printf("testing adds song in right place (end)");
+  list = insert_ordered(list, "one kiss", "dua lipa");
   print_list(list);
 
   return 0;

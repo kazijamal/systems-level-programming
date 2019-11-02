@@ -78,6 +78,21 @@ void * remove_node(struct song_node * list, char * name, char * artist) {
 	}
 }
 
+struct song_node * free_list(struct song_node * list) {
+
+	struct song_node * next;
+
+    while (list != NULL) {
+
+        next = list->next;
+        printf("freeing node: %s:%s\n",list->artist,list->name);
+        free(list);
+        list = next;
+    }
+
+    return list;
+}
+
 struct song_node * insert_front(struct song_node * list, char name[100], char artist[100]) {
   struct song_node *new = malloc(sizeof(struct song_node));
   strcpy(new->name, name);

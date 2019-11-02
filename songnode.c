@@ -21,35 +21,57 @@ struct song_node * insert_front(struct song_node * list, char name[100], char ar
 }
 
 struct song_node * insert_ordered(struct song_node * list, char name1[100], char artist1[100]) {
-  struct song_node *new = malloc(1 * sizeof(struct song_node));
+
+  //create new song_node
+  struct song_node *new = malloc(sizeof(struct song_node));
   strcpy(new->name, name1);
   strcpy(new->artist, artist1);
+
+  //insert front case 1
   if (strcmp(list->artist,artist1) > 0) {
-    return insert_front(list,name1,artist1);
+	new->next = list;
+    return new;
   }
-  struct song_node *curr = list;
-  struct song_node *prev;
+
+  //insert front case 2
+  else if (strcmp(list->artist,artist1) == 0 && strcmp(list->name,name1) > 0) {
+	new->next = list;
+    return new;
+  }
+
+  //create pointers to go through list
+  struct song_node *curr = list->next;
+  struct song_node *prev = list;
+
+  //go through list
   while (curr != NULL) {
-    if (strcmp(curr->artist,artist1) > 0) {
-      new->next = curr;
-      prev->next = new;
-      return list;
-    }
-    if (strcmp(curr->artist,artist1) == 0) {
-      while (curr != NULL) {
-	if (strcmp(curr->name,name1) < 0) {
-	  new->next = curr;
-	  prev->next = new;
-	  return list;
+
+	//find bigger artist string
+    if(strcmp(curr->artist,artist1) > 0) {
+		new->next = curr;
+		prev->next = new;
+		return list;
 	}
+
+	//find same artist string
+	else if (strcmp(curr->artist,artist1) == 0) {
+
+		//find bigger name string
+		if (strcmp(curr->name,name1) > 0) {
+			new->next = curr;
+			prev->next = new;
+			return list;
+		}
+	}
+
+	//find neither, keep going
 	prev = curr;
 	curr = curr->next;
-      }
-    }
-    prev = curr;
-    curr = curr->next;
   }
+
+  //end of list
   prev->next = new;
   new->next = NULL;
+
   return list;
 }

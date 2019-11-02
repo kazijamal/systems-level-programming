@@ -59,6 +59,34 @@ struct song_node * find_artist_first(struct song_node * list, char artist[100]) 
 	return list;
 }
 
+//uniform probability
+struct song_node * rand_node(struct song_node * list) {
+
+	int length = 0;
+
+	struct song_node * curr = list;
+
+	//calculate length of list
+	while (curr != NULL) {
+
+		length++;
+		curr = curr->next;
+	}
+
+	//get random index
+	srand(time(0));
+	int index = rand() % length;
+	int i;
+
+	//get pointer at index
+	for (i = 0; i < index; i++) {
+
+		list = list->next;
+	}
+
+	return list;
+}
+
 struct song_node * remove_node(struct song_node * list, char * name, char * artist) {
 
 	//remove from beginning case

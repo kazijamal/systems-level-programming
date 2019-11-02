@@ -111,7 +111,15 @@ int main() {
   list = remove_node(list,"another song","black eyed peas");
   print_list(list);
 
-  printf("jailbreak:\n");
+  printf("testing random node method:")
+  found = rand_node(list);
+  printf("%s:%s\n",found->artist,found->name);
+  found = rand_node(list);
+  printf("%s:%s\n",found->artist,found->name);
+  found = rand_node(list);
+  printf("%s:%s\n",found->artist,found->name);
+
+  printf("\njailbreak:\n");
   list = free_list(list);
   print_list(list);
 

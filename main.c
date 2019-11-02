@@ -47,7 +47,7 @@ int main() {
   list = insert_ordered(list, "one kiss", "dua lipa");
   print_list(list);
 
-  printf("testing find artist method:\n")
+  printf("testing find artist method:\n");
   printf("testing artist not found in beginning\n");
   found = find_artist_first(list, "acdc");
   printf("%p\n",found);

@@ -107,7 +107,7 @@ int main() {
   remove_node(list,"ooga booga","ooga booga");
   print_list(list);
 
-  printf("jailbreak:")
+  printf("jailbreak:");
   list = free_list(list);
   print_list(list);
 

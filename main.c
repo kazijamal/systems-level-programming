@@ -7,7 +7,7 @@ int main() {
   print_list(list);
   list = insert_front(list, "no games", "dua lipa");
   print_list(list);
-  list = insert_front(list, "flex", "mumble rapper");
+  list = insert_ordered(list, "flex", "mumble rapper");
   print_list(list);
   return 0;
 }

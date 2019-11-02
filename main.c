@@ -99,8 +99,12 @@ int main() {
   remove_node(list,"one kiss","dua lipa");
   print_list(list);
 
-  printf("removing from end (minecraft : the end?");
+  printf("removing from end (minecraft : the end?)\n");
   remove_node(list,"the end?","minecraft");
+  print_list(list);
+
+  printf("removing something not in list (ooga booga : ooga booga)\n");
+  remove_node(list,"ooga booga","ooga booga");
   print_list(list);
 
   return 0;

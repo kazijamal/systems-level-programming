@@ -13,7 +13,7 @@ void print_list(struct song_node * list) {
 }
 
 //based on artist and song name
-struct song_node * find(struct song_node * list, char name[100], char artist[100]) {
+struct song_node * find_song(struct song_node * list, char name[100], char artist[100]) {
 
 	while (list != NULL) {
 
@@ -39,7 +39,7 @@ struct song_node * find(struct song_node * list, char name[100], char artist[100
 }
 
 //first song, based on artist
-struct song_node * find(struct song_node * list, char artist[100]) {
+struct song_node * find_artist_first(struct song_node * list, char artist[100]) {
 
 	while (list != NULL) {
 		

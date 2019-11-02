@@ -12,6 +12,53 @@ void print_list(struct song_node * list) {
   printf("]\n");
 }
 
+//based on artist and song name
+struct song_node * find(struct song_node * list, char name[100], char artist[100]) {
+
+	while (list != NULL) {
+
+		if (strcmp(list->artist,artist) > 0) {
+			//artist wont be in list because alphabetical
+			return NULL;
+		}
+
+		else if (strcmp(list->artist,artist) == 0 && strcmp(list->name,name) > 0) {
+			//name wont be in list because alphabetical
+			return NULL;
+		}
+
+		else if (strcmp(list->artist,artist) == 0 && strcmp(list->name,name) == 0) {
+			return list;
+		}
+
+		list = list->next;
+	}
+
+	//returns NULL because not found
+	return list;
+}
+
+//first song, based on artist
+struct song_node * find(struct song_node * list, char artist[100]) {
+
+	while (list != NULL) {
+		
+		if (strcmp(list->artist,artist) > 0) {			
+			//wont be in list because alphabetical
+			return NULL;
+		}
+
+		else if (strcmp(list->artist,artist) == 0) {
+			return list;
+		}
+
+		list = list->next;
+	}
+
+	//returns NULL because not found
+	return list;
+}
+
 struct song_node * insert_front(struct song_node * list, char name[100], char artist[100]) {
   struct song_node *new = malloc(sizeof(struct song_node));
   strcpy(new->name, name);

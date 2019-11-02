@@ -4,6 +4,7 @@
 
 int main() {
   struct song_node * list = NULL;
+  struct song_node * found = NULL;
   print_list(list);
 
   printf("testing adds to null list\n");
@@ -45,6 +46,22 @@ int main() {
   printf("testing adds song in right place (end)\n");
   list = insert_ordered(list, "one kiss", "dua lipa");
   print_list(list);
+
+  printf("testing artist not found in beginning\n");
+  found = find(list, "acdc");
+  print_list(found);
+
+  printf("testing artist not found in middle\n");
+  found = find(list, "downstait");
+  print_list(found);
+
+  printf("testing artist not found in end\n");
+  found = find(list, "zz top");
+  print_list(list);
+
+  printf("testing found artist first song\n");
+  found = find(list, "dua lipa");
+  print_list(found->name);
 
   return 0;
 }

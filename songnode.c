@@ -64,7 +64,7 @@ struct song_node * remove_node(struct song_node * list, char * name, char * arti
 	//remove from beginning case
 	if (strcmp(list->name,name) == 0 && strcmp(list->artist,artist) == 0) {
 
-		song_node * next = list->next;
+		struct song_node * next = list->next;
 		free(list);
 		return next;
 	}

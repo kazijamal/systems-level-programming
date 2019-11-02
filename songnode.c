@@ -59,6 +59,22 @@ struct song_node * find_artist_first(struct song_node * list, char artist[100]) 
 	return list;
 }
 
+//assuming don't remove from beginning
+void * remove_node(struct song_node * list, char * name, char * artist) {
+
+	struct song_node * curr = list->next;
+	struct song_node * prev = list;
+
+	while (curr != NULL) {
+
+		if (strcmp(curr->name,name) == 0 && strcmp(curr->artist,artist) == 0) {
+
+			prev->next = curr->next;
+			free(curr);
+		}	
+	}
+}
+
 struct song_node * insert_front(struct song_node * list, char name[100], char artist[100]) {
   struct song_node *new = malloc(sizeof(struct song_node));
   strcpy(new->name, name);

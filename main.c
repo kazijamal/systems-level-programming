@@ -47,7 +47,7 @@ int main() {
   list = insert_ordered(list, "one kiss", "dua lipa");
   print_list(list);
 
-  printf("testing find artist method:\n");
+  printf("\ntesting find artist method:\n");
   printf("testing artist not found in beginning\n");
   found = find_artist_first(list, "acdc");
   printf("%p\n",found);
@@ -62,7 +62,7 @@ int main() {
 
   printf("testing found artist first song\n");
   found = find_artist_first(list, "dua lipa");
-  printf("%s:%s\n",found->artist,found->name);
+  printf("%s:%s\n\n",found->artist,found->name);
 
 
   printf("testing find song method:\n");
@@ -93,6 +93,15 @@ int main() {
   printf("testing song found\n");
   found = find_song(list, "new rules", "dua lipa");
   printf("%s:%s\n",found->artist,found->name);
+
+  printf("\ntesting removal method:\n");
+  printf("removing from middle (dua lipa : one kiss)\n");
+  remove_node(list,"one kiss","dua lipa");
+  print_list(list);
+
+  printf("removing from end (minecraft : the end?");
+  remove_node(list,"the end?","minecraft");
+  print_list(list);
 
   return 0;
 }

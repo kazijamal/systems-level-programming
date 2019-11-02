@@ -47,6 +47,7 @@ int main() {
   list = insert_ordered(list, "one kiss", "dua lipa");
   print_list(list);
 
+  printf("testing find artist method:\n")
   printf("testing artist not found in beginning\n");
   found = find_artist_first(list, "acdc");
   printf("%p\n",found);
@@ -61,7 +62,37 @@ int main() {
 
   printf("testing found artist first song\n");
   found = find_artist_first(list, "dua lipa");
-  printf("%s\n",found->name);
+  printf("%s:%s\n",found->artist,found->name);
+
+
+  printf("testing find song method:\n")
+  printf("testing artist not found in beginning\n");
+  found = find_song(list, "highway to hell", "acdc");
+  printf("%p\n",found);
+
+  printf("testing artist not found in middle\n");
+  found = find_song(list, "avengers theme song", "downstait");
+  printf("%p\n",found);
+
+  printf("testing artist not found in end\n");
+  found = find_song(list, "la grange", "zz top");
+  printf("%p\n",found);
+
+  printf("testing song not found in beginning\n");
+  found = find_song(list, "a", "dua lipa");
+  printf("%p\n",found);
+
+  printf("testing song not found in middle\n");
+  found = find_song(list, "f", "dua lipa");
+  printf("%p\n",found);
+
+  printf("testing song not found in end\n");
+  found = find_artist_first(list, "z", "dua lipa");
+  printf("%p\n",found);
+
+  printf("testing song found\n");
+  found = find_artist_first(list, "new rules", "dua lipa");
+  printf("%s:%s\n",found->artist,found->name);
 
   return 0;
 }

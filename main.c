@@ -87,11 +87,11 @@ int main() {
   printf("%p\n",found);
 
   printf("testing song not found in end\n");
-  found = find_artist_first(list, "z", "dua lipa");
+  found = find_song(list, "z", "dua lipa");
   printf("%p\n",found);
 
   printf("testing song found\n");
-  found = find_artist_first(list, "new rules", "dua lipa");
+  found = find_song(list, "new rules", "dua lipa");
   printf("%s:%s\n",found->artist,found->name);
 
   return 0;

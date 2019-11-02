@@ -59,9 +59,17 @@ struct song_node * find_artist_first(struct song_node * list, char artist[100]) 
 	return list;
 }
 
-//assuming don't remove from beginning
-void * remove_node(struct song_node * list, char * name, char * artist) {
+struct song_node * remove_node(struct song_node * list, char * name, char * artist) {
 
+	//remove from beginning case
+	if (strcmp(list->name,name) == 0 && strcmp(list->artist,artist) == 0) {
+
+		song_node * next = list->next;
+		free(list);
+		return next;
+	}
+
+	//remove from middle/end case
 	struct song_node * curr = list->next;
 	struct song_node * prev = list;
 
@@ -76,6 +84,8 @@ void * remove_node(struct song_node * list, char * name, char * artist) {
 		prev = curr;
 		curr = curr->next;
 	}
+
+	return list;
 }
 
 struct song_node * free_list(struct song_node * list) {

@@ -96,18 +96,22 @@ int main() {
 
   printf("\ntesting removal method:\n");
   printf("removing from middle (dua lipa : one kiss)\n");
-  remove_node(list,"one kiss","dua lipa");
+  list = remove_node(list,"one kiss","dua lipa");
   print_list(list);
 
   printf("removing from end (minecraft : the end?)\n");
-  remove_node(list,"the end?","minecraft");
+  list = remove_node(list,"the end?","minecraft");
   print_list(list);
 
   printf("removing something not in list (ooga booga : ooga booga)\n");
-  remove_node(list,"ooga booga","ooga booga");
+  list = remove_node(list,"ooga booga","ooga booga");
   print_list(list);
 
-  printf("jailbreak:");
+  printf("removing from beginning of list (black eyed peas: another song)\n");
+  list = remove_node(list,"another song","black eyed peas");
+  print_list(list);
+
+  printf("jailbreak:\n");
   list = free_list(list);
   print_list(list);
 

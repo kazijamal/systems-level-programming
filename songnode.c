@@ -27,13 +27,20 @@ struct song_node * insert_ordered(struct song_node * list, char name1[100], char
   strcpy(new->name, name1);
   strcpy(new->artist, artist1);
 
-  //insert front case 1
+  //insert front case 1 (null list)
+  if (list == NULL) {
+  	new->next = NULL;
+  	list = new;
+	return list;
+  }
+
+  //insert front case 2 (artist greater)
   if (strcmp(list->artist,artist1) > 0) {
 	new->next = list;
     return new;
   }
 
-  //insert front case 2
+  //insert front case 3 (artist same, name greater)
   else if (strcmp(list->artist,artist1) == 0 && strcmp(list->name,name1) > 0) {
 	new->next = list;
     return new;

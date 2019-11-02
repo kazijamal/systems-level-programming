@@ -87,7 +87,7 @@ int main() {
   printf("%p\n",found);
 
   printf("testing song not found in end\n");
-  found = find_song(list, "z", "dua lipa");
+  found = find_song(list, "zzzz", "minecraft");
   printf("%p\n",found);
 
   printf("testing song found\n");

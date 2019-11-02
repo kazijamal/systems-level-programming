@@ -26,5 +26,13 @@ int main() {
   list = insert_ordered(list, "the end?", "minecraft");
   print_list(list);
 
+  printf("testing adds artist in right place");
+  list = insert_ordered(list, "crazy", "gnarls barkley");
+  print_list(list);
+
+  printf("add a dua lipa song for future testing");
+  list = insert_ordered(list, "idgaf", "dua lipa");
+  print_list(list);
+
   return 0;
 }

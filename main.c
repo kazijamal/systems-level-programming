@@ -65,7 +65,7 @@ int main() {
   printf("%s:%s\n",found->artist,found->name);
 
 
-  printf("testing find song method:\n")
+  printf("testing find song method:\n");
   printf("testing artist not found in beginning\n");
   found = find_song(list, "highway to hell", "acdc");
   printf("%p\n",found);

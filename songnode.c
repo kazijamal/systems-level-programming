@@ -72,6 +72,9 @@ void * remove_node(struct song_node * list, char * name, char * artist) {
 			prev->next = curr->next;
 			free(curr);
 		}	
+
+		prev = curr;
+		curr = curr->next;
 	}
 }
 

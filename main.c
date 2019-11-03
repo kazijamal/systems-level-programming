@@ -199,7 +199,7 @@ int main() {
   print_artist(table, "Bink Bloyd");
   printf("====================================\n\n");
 
-  printf("Testing shuffle");
+  printf("Testing shuffle\n");
   srand(time(NULL));
   shuffle(table, 3);
   printf("====================================\n\n");

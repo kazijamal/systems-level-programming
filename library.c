@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "library.h"
 #include "songnode.h"
 
@@ -41,7 +42,16 @@ void print_artist(struct song_node ** library, char * artist) {
   if (index > 25 || index < 0) {
     index = 26;
   }
-  print_list(find_artist_first(library[0], artist));
+  struct song_node * list = find_artist_first(library[index], artist);
+  if (list == NULL) {
+    printf("no songs found by artist\n");
+  }
+  else {
+    while (list != NULL && strcmp(list->artist, artist) == 0) {
+      printf("[%s: %s]\n", list->artist, list->name);
+      list = list->next;
+    }
+  }
 }
 
 void print_library(struct song_node ** library) {
@@ -58,9 +68,13 @@ void print_library(struct song_node ** library) {
   }
 }
 
-void shuffle(struct song_node ** library) {
-  int index = rand() % 27;
-  print_list(library[index]);
+void shuffle(struct song_node ** library, int n) {
+  while (n > 0) {
+    int index = rand() % 27;
+    struct song_node * random_node = rand_node(library[index]);
+    printf("[%s: %s]\n", random_node->artist, random_node->name);
+    n--;
+  }
 }
 
 void delete(struct song_node ** library, char * name, char * artist) {

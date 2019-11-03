@@ -123,11 +123,11 @@ int main() {
   srand(time(NULL));
   printf("testing random node method:\n");
   found = rand_node(list);
-  printf("%s:%s\n",found->artist,found->name);
+  printf("%s: %s\n",found->artist,found->name);
   found = rand_node(list);
-  printf("%s:%s\n",found->artist,found->name);
+  printf("%s: %s\n",found->artist,found->name);
   found = rand_node(list);
-  printf("%s:%s\n",found->artist,found->name);
+  printf("%s: %s\n",found->artist,found->name);
   printf("====================================\n\n");
 
   printf("jailbreak:\n");
@@ -195,10 +195,13 @@ int main() {
   print_artist(table, "pearl jam");
   printf("\n");
   print_artist(table, "ac/dc");
+  printf("\n");
+  print_artist(table, "Bink Bloyd");
   printf("====================================\n\n");
 
   printf("Testing shuffle");
-  shuffle(table);
+  srand(time(NULL));
+  shuffle(table, 3);
   printf("====================================\n\n");
   
   return 0;

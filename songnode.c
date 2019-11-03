@@ -74,7 +74,6 @@ struct song_node * rand_node(struct song_node * list) {
 	}
 
 	//get random index
-	srand(time(0));
 	int index = rand() % length;
 	int i;
 

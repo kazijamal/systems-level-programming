@@ -111,7 +111,8 @@ int main() {
   list = remove_node(list,"another song","black eyed peas");
   print_list(list);
 
-  printf("testing random node method:");
+  srand(time(0));
+  printf("testing random node method:\n");
   found = rand_node(list);
   printf("%s:%s\n",found->artist,found->name);
   found = rand_node(list);

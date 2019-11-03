@@ -1,8 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "songnode.h"
+#include "library.h"
 
 int main() {
+  printf("LINKED LIST TESTS\n");
+  printf("====================================\n\n");
+  
   struct song_node * list = NULL;
   struct song_node * found = NULL;
   print_list(list);
@@ -26,6 +31,7 @@ int main() {
   printf("testing adds to end if same artist, greater song\n");
   list = insert_ordered(list, "the end?", "minecraft");
   print_list(list);
+  printf("====================================\n\n");
 
   printf("testing adds artist in right place\n");
   list = insert_ordered(list, "crazy", "gnarls barkley");
@@ -46,8 +52,9 @@ int main() {
   printf("testing adds song in right place (end)\n");
   list = insert_ordered(list, "one kiss", "dua lipa");
   print_list(list);
+  printf("====================================\n\n");
 
-  printf("\ntesting find artist method:\n");
+  printf("testing find artist method:\n");
   printf("testing artist not found in beginning\n");
   found = find_artist_first(list, "acdc");
   printf("%p\n",found);
@@ -63,7 +70,7 @@ int main() {
   printf("testing found artist first song\n");
   found = find_artist_first(list, "dua lipa");
   printf("%s:%s\n\n",found->artist,found->name);
-
+  printf("====================================\n\n");
 
   printf("testing find song method:\n");
   printf("testing artist not found in beginning\n");
@@ -93,8 +100,9 @@ int main() {
   printf("testing song found\n");
   found = find_song(list, "new rules", "dua lipa");
   printf("%s:%s\n",found->artist,found->name);
+  printf("====================================\n\n");
 
-  printf("\ntesting removal method:\n");
+  printf("testing removal method:\n");
   printf("removing from middle (dua lipa : one kiss)\n");
   list = remove_node(list,"one kiss","dua lipa");
   print_list(list);
@@ -110,8 +118,9 @@ int main() {
   printf("removing from beginning of list (black eyed peas: another song)\n");
   list = remove_node(list,"another song","black eyed peas");
   print_list(list);
+  printf("====================================\n\n");
 
-  srand(time(0));
+  srand(time(NULL));
   printf("testing random node method:\n");
   found = rand_node(list);
   printf("%s:%s\n",found->artist,found->name);
@@ -119,10 +128,78 @@ int main() {
   printf("%s:%s\n",found->artist,found->name);
   found = rand_node(list);
   printf("%s:%s\n",found->artist,found->name);
+  printf("====================================\n\n");
 
-  printf("\njailbreak:\n");
+  printf("jailbreak:\n");
   list = free_list(list);
   print_list(list);
+  printf("====================================\n\n");
 
+  printf("MUSIC LIBRARY TESTS\n\n");
+  printf("====================================\n\n");
+
+  struct song_node * table[27];
+  int index;
+  for (index = 0; index < 27; index++) {
+    table[index] = NULL;
+  }
+
+  printf("Testing add_song\n");
+  add_song(table, "thunderstruck", "ac/dc");
+  add_song(table, "alive", "pearl jam");
+  add_song(table, "even flow", "pearl jam");
+  add_song(table, "yellow ledbetter", "pearl jam");
+  add_song(table, "time", "pink floyd");
+  add_song(table, "peaches", "presidents of the united states of america");
+  add_song(table, "paranoid android", "radiohead");
+  add_song(table, "street spirit (fade out)", "radiohead");
+  printf("====================================\n\n");
+
+  printf("Testing print_library\n");
+  print_library(table);
+  printf("====================================\n\n");
+
+  printf("Testing print_letter\n");
+  print_letter(table, 'p');
+  printf("====================================\n\n");
+
+  printf("Testing search_song\n");
+  search_song(table, "alive", "pearl jam");
+  search_song(table, "time", "pearl jam");
+  printf("====================================\n\n");
+
+  printf("Testing delete\n");
+  delete(table, "alive", "pearl jam");
+  print_library(table);
+  printf("\n");
+  delete(table, "yellow ledbetter", "pearl jam");
+  print_library(table);
+  printf("====================================\n\n");
+
+  printf("Testing clear\n");
+  clear(table);
+  
+  printf("Library after clear:\n\n");
+  printf("====================================\n\n");
+
+  printf("Adding songs to empty library\n");
+  add_song(table, "thunderstruck", "ac/dc");
+  add_song(table, "alive", "pearl jam");
+  add_song(table, "even flow", "pearl jam");
+  add_song(table, "yellow ledbetter", "pearl jam");
+  add_song(table, "time", "pink floyd");
+  print_library(table);
+  printf("====================================\n\n");
+  
+  printf("Testing print_artist\n");
+  print_artist(table, "pearl jam");
+  printf("\n");
+  print_artist(table, "ac/dc");
+  printf("====================================\n\n");
+
+  printf("Testing shuffle");
+  shuffle(table);
+  printf("====================================\n\n");
+  
   return 0;
 }

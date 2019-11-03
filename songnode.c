@@ -136,20 +136,16 @@ struct song_node * insert_ordered(struct song_node * list, char name1[100], char
   //create pointers to go through list
   struct song_node *curr = list->next;
   struct song_node *prev = list;
-
   //go through list
   while (curr != NULL) {
-
     //find bigger artist string
     if(strcmp(curr->artist,artist1) > 0) {
       new->next = curr;
       prev->next = new;
       return list;
     }
-
     //find same artist string
     else if (strcmp(curr->artist,artist1) == 0) {
-
       //find bigger name string
       if (strcmp(curr->name,name1) > 0) {
 	new->next = curr;
@@ -157,15 +153,12 @@ struct song_node * insert_ordered(struct song_node * list, char name1[100], char
 	return list;
       }
     }
-
     //find neither, keep going
     prev = curr;
     curr = curr->next;
   }
-
   //end of list
   prev->next = new;
   new->next = NULL;
-
   return list;
 }

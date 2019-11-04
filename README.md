@@ -1,5 +1,45 @@
 # systems-work
 
+## Monday 11/4/19
+
+### binary, octal and hexadecimal integers
+- other base formatting characters for `printf`:
+```
+%o: octal integer
+%x: hexadecimal integer
+```
+- you can define native integers in base 2, 8 and 16 by using the following
+```
+0b : binary
+0 : octal
+0x : hexadecimal
+```
+### bitwise operators
+evaluated on every bit of a value
+
+`~x`
+- Negation: flip every bit of x
+
+`a | b`
+- Bitwise or: perform logical or for each pair of bits in (a, b)
+
+`a & b`
+- Bitwise and: perform logical and for each pair of bits in (a, b)
+
+`a ^ b`
+- Bitwise or
+
+### swapping two variables using bitwise operators
+```c
+a = a^b
+b = a^b
+a = a^b
+
+r = a^b
+b = r^b => a^(b ^ b)
+a = a^b
+```
+
 ## Monday 10/28/19
 
 ### makefile updates

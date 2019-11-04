@@ -13,3 +13,6 @@
 [submodule "array-swap"]
 	path = array-swap
 	url = git@github.com:mks65/array-swap-kazijamal.git
+[submodule "myTunes"]
+	path = myTunes
+	url = git@github.com:kazijamal/systems-work.git

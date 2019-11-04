@@ -21,6 +21,7 @@ run:
 
 clean:
 	rm *.o
+	rm test_myTunes
 	rm *~
 
 memcheck:

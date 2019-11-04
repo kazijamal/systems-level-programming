@@ -1,5 +1,109 @@
 # systems-work
 
+## Monday 10/28/19
+
+### makefile updates
+#### variables
+```make
+CC = gcc -g			sets the value of the variable CC
+$(CC)				returns the value of the variable CC
+```
+#### conditional statements
+```make
+ifeq ($(DEBUG), true)		if the DEBUG variable equals true
+	CC = gcc -g
+else
+	CC = gcc
+endif
+```
+- this lets the user do `make DEBUG=true`
+
+## Thursday 10/24/19
+
+### Get 'Dem Bugs
+#### GDB - GNU DeBugger
+- to use gdb, you must compile using the -g flag with gcc
+- basic usage: 
+```console
+$ gdb program
+```
+- this starts a gdb shell from which you can run your program
+- commands from in the gdb shell:
+	- `run`: runs the program until it ends/crashes/gets a signal
+	- `list`: show the lines of code run around a crash
+	- `print var`: print the value of `var`
+	- `backtrace`: show the current stack
+	- `break line number`: creates breakpoint at a line
+- running a program in pieces
+	- `run`: restarts the program
+	- `continue`: run the program until the next breakpoint/crash/end
+	- `next`: run the next line of the program only
+	- `step`: run the next lne of the program, if that is a funcxtion call, run only the next line of that function
+#### Valgrind
+- tool for debugging memory issues in C programs
+- you must compile with -g in order to use valgrind (and similar tools)
+- usage:
+```console
+$ valgrind --leak-check=yes ./program
+```
+
+## Wednesday 10/23/19
+
+### Dynamic Memory Allocation continued
+#### calloc
+```c
+calloc(site_t n, size_t x)
+```
+- allocates n * x bytes of memory, ensuring every bit is 0
+#### realloc
+```c
+realloc(void *p, size_t x)
+```
+- changes the amount of memory allocated for a block to `x` bytes
+- `p` must point to the beginning of a block
+- returns a pointer to the beginning of the block (this is not always the same as `p`)
+- if `x` is smaller than the original size of the allocation, the extra bytes will be released
+- if `x` is larger than the original size then either:
+	1. if there is enough space at the end of the original allocation, the original allocation will be updated
+	2. if there is not enough space, a new allocation will be created, containing all the original values; the original allocation will be freed
+
+## Tuesday 10/22/19
+
+### Dynamic Memory Allocation
+#### malloc
+```c
+malloc(site_t x)
+```
+- allocates x bytes of heap memory
+- returns the address at the beginning of the allocation
+- returns a `void *`
+```c
+int *p;
+p = malloc(5 * sizeof(int));
+```
+#### free
+```c
+free(void * p)
+```
+- releases dynamically allocated memory
+- has one parameter, a pointer to the beginning ofa  dynamically allocated block of memory
+- every call to `malloc` or `calloc` should have a corresponding call to `free`
+
+## Monday 10/21/19
+
+### Stack memory vs Heap memory
+- every program can have its own stack and heap
+
+### Stack Memory
+- stores all normally declared variables (including pointers and structs), arrays and function calls
+- functions are pushed onto the stack in the order they are called, and popped off when completed
+- when a function is popped off the stack, the stack memory associated with it is released
+
+### Heap Memory
+- stores dynamically allocated memory
+	- dynamically allocated memory is allocated at runtime
+- data will remain in the heap until it is manually released (or the program terminates)
+
 ## Tuesday 10/15/19
 
 ### Struct
@@ -7,7 +111,7 @@
 ```c
 struct { int a; char x; } s;
 ```
-- here, s is a variable of type ```struct {int a; char x; }```
+- here, s is a variable of type `struct {int a; char x; }`
 - we use the . operator to access a value inside a struct
 ```c
 s.a = 10;
@@ -19,7 +123,7 @@ struct foo { int a; char x; }; // struct prototype
 ```
 - struct prototypes make it easier to create multiple variables of the same type, and also helps with interaction between those variables
 - normally structs are declared outside of the main function or in header files to increase scope
-- . binds before * (dot operator has precedence over dereference operator)
+- . binds before * (dot operator has precedence newover dereference operator)
 - to access data from a struct pointer you would do:
 ```c
 struct foo *p;
@@ -49,12 +153,12 @@ size_t x = 139; // x is really an unsigned long
 - just an automation tool, can be used for other things
 - javac creates byte code or binary code which is then run by the jvm (not an executable)
 - automates checking of dependencies and makes working with multi file programs easier
-
+new
 ### makefile
 - only recompiles modified files
 - good practices
   - make a separate compilation step for each .c file with .o as the target
-    - dependencies should only be the .c file and its corresponding hearders or .h files
+    - dependencies should only be the .c file and its corresponding headers or .h files
   - dependencies of the all target should be all of the .o files
   - have targets that serve similar purposes to run and clean
 - example

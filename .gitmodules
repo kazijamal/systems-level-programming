@@ -1,18 +1,3 @@
-[submodule "construction"]
-	path = construction
-	url = git@github.com:kazijamal/mks65-construction.git
-[submodule "euler"]
-	path = euler
-	url = git@github.com:mks65/euler-kazijamal.git
-[submodule "make"]
-	path = make
-	url = git@github.com:mks65/make-kazijamal.git
-[submodule "strings"]
-	path = strings
-	url = git@github.com:mks65/strings-kazijamal.git
-[submodule "array-swap"]
-	path = array-swap
-	url = git@github.com:mks65/array-swap-kazijamal.git
-[submodule "myTunes"]
-	path = myTunes
+[submodule "systems-work"]
+	path = systems-work
 	url = git@github.com:kazijamal/systems-work.git

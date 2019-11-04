@@ -200,7 +200,6 @@ int main() {
   printf("====================================\n\n");
 
   printf("Testing shuffle\n");
-  srand(time(NULL));
   shuffle(table, 3);
   printf("====================================\n\n");
   

@@ -71,6 +71,9 @@ void print_library(struct song_node ** library) {
 void shuffle(struct song_node ** library, int n) {
   while (n > 0) {
     int index = rand() % 27;
+    while (library[index] == NULL) {
+      index = rand() % 27;
+    }
     struct song_node * random_node = rand_node(library[index]);
     printf("[%s: %s]\n", random_node->artist, random_node->name);
     n--;

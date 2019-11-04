@@ -6,7 +6,7 @@ struct song_node {
 
 void print_list(struct song_node * list);
 struct song_node * insert_front(struct song_node * list, char * name, char * artist);
-struct song_node * insert_ordered(struct song_node * list, char * name, char * artist);
+struct song_node * insert_ordered(struct song_node * list, char * name1, char * artist1);
 struct song_node * find_song(struct song_node * list, char * name, char * artist);
 struct song_node * find_artist_first(struct song_node * list, char * artist);
 struct song_node * rand_node(struct song_node * list);

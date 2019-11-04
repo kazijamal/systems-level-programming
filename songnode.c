@@ -99,7 +99,7 @@ struct song_node * free_list(struct song_node * list) {
   return list;
 }
 
-struct song_node * insert_front(struct song_node * list, char name[100], char artist[100]) {
+struct song_node * insert_front(struct song_node * list, char * name, char * artist) {
   struct song_node *new = malloc(sizeof(struct song_node));
   strcpy(new->name, name);
   strcpy(new->artist, artist);
@@ -107,7 +107,7 @@ struct song_node * insert_front(struct song_node * list, char name[100], char ar
   return new;
 }
 
-struct song_node * insert_ordered(struct song_node * list, char name1[100], char artist1[100]) {
+struct song_node * insert_ordered(struct song_node * list, char * name1, char * artist1) {
 
   //create new song_node
   struct song_node *new = malloc(sizeof(struct song_node));

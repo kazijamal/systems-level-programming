@@ -38,7 +38,7 @@ int main() {
   print_list(list);
 
   printf("add a dua lipa song for future testing\n");
-  list = insert_ordered(list, "idgaf", "dua lipa");
+  list = insert_ordered(list, "idgap", "dua lipa");
   print_list(list);
 
   printf("testing adds song in right place (middle)\n");

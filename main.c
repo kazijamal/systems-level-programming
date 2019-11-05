@@ -202,6 +202,7 @@ int main() {
   printf("Testing shuffle\n");
   shuffle(table, 3);
   printf("====================================\n\n");
+  clear(table);
   
   return 0;
 }

@@ -1,8 +1,50 @@
 # systems-work
 
+## Thursday 11/7/19
+
+### file tables
+- a list of all files being used by a program while it is running
+- contains basic information like the file's location and size
+- the file table has limited space, which is a power of 2 and commonly 256
+- `getdtablesize()` will return the file table size
+- each file is given an integer index, starting at 0, this is the file descriptor
+- there are 3 files always open in the table:
+	- 0 or STDIN_FILENO: stdin
+	- 1 or STDOUT_FILENO: stdout
+	- 2 or STDERR_FILENO: stderr
+
+| FD | Name      | Path      | Size ... |
+|----|-----------|-----------|----------|
+|  0 | stdin     |           |          |
+|  1 | stdout    |           |          |
+|  2 | stderr    |           |          |
+|  3 |           |           |          |
+|  4 |           |           |          |
+```c
+open - <fcntl.h>
+```
+- add a file to the file table and returns its file descriptor
+- if open fails, -1 is returned, extra error information can be found in `errno`
+	- `errno` is an int variable that can be found in <errno.h>
+	- use `strerror` (in string.h) on errno to terun a string description of the error
+```c
+open(path, flags, mode)
+```
+- `mode`
+	- only used when creating a file; set the new file's permissions using a 3 digit octal #
+- `flags`
+	- determine what you plan to do with the file, use the following constants and combine with |:
+		- O_RDONLY
+		- O_WRONLY
+		- O_RDWR 
+		- O_APPEND
+		- O_TRUNC 
+		- O_CREAT
+		- O_EXCL: when combined with O_CREATE< will return an error if the file exists
+
 ## Wednesday 11/6/19
 
-### file permissions
+### file permissions (mode)
 - 3 types of permissions
 	- read, write, execute
 - permissions can be represented as 3-digit binary #s, or 1-digit octal #s
@@ -18,13 +60,6 @@ chmod permissions file
 - command line utility to change file permissions
 - the owner of a file (or root) can change permissions
 - file ownership and group can be changed with the `chown` and `chgrp` command line utilities
-
-### file tables
-- a list of all files being used by a program while it is running
-- contains basic information like the file's location and size
-- the file table has limited space, which is a power of 2 and commonly 256
-- `getdtablesize()` will return the file table size
-- each file is given an integer index, starting at 0, this is the file descriptor
 
 ## Monday 11/4/19
 

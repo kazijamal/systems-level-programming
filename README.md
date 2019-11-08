@@ -31,6 +31,7 @@ write(fd, buff, n)
 ```c
 close(fd)
 - returns 0 if successful, 1 if unsuccessful
+```
 
 ## Thursday 11/7/19
 

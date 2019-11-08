@@ -1,5 +1,37 @@
 # systems-work
 
+## Friday 11/8/19
+
+### umask - <sys/stat.h>
+- set the file creation permission mask
+- by default, created files are not given the exact permissions provided in the mode argument to open; some permissions are automatically shut off
+- default Linux mask is 002
+- umask is applied the folloing way:
+```sh
+new_permissions = ~mask & mode
+```
+### read - <unistd.h>
+- read data from a file
+```c
+read(fd, buff, n)
+```
+- read `n` bytes from `fd`'s file into `buff`
+- returns the number of bytes actually read; returns -1 and sets errorno if unsuccessful
+- `buff` must be a pointer
+### write - <unistd.h>
+- read data from a file
+```c
+write(fd, buff, n)
+```
+- write `n` bytes to `fd`'s file from `buff`
+- returns the number of bytes actually written; returns -1 and sets errorno if unsuccessful
+- `buff` must be a pointer
+
+### close
+```c
+close(fd)
+- returns 0 if successful, 1 if unsuccessful
+
 ## Thursday 11/7/19
 
 ### file tables
@@ -20,9 +52,7 @@
 |  2 | stderr    |           |          |
 |  3 |           |           |          |
 |  4 |           |           |          |
-```c
-open - <fcntl.h>
-```
+### open - <fcntl.h>
 - add a file to the file table and returns its file descriptor
 - if open fails, -1 is returned, extra error information can be found in `errno`
 	- `errno` is an int variable that can be found in <errno.h>

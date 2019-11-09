@@ -19,7 +19,7 @@ read(fd, buff, n)
 - returns the number of bytes actually read; returns -1 and sets errorno if unsuccessful
 - `buff` must be a pointer
 ### write - <unistd.h>
-- read data from a file
+- write data to a file
 ```c
 write(fd, buff, n)
 ```

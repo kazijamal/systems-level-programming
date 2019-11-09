@@ -71,7 +71,7 @@ open(path, flags, mode)
 		- O_APPEND
 		- O_TRUNC 
 		- O_CREAT
-		- O_EXCL: when combined with O_CREATE< will return an error if the file exists
+		- O_EXCL: when combined with O_CREAT will return an error if the file exists
 
 ## Wednesday 11/6/19
 

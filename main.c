@@ -4,6 +4,7 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <sys/stat.h>
 
 // generates a random number by reading in the correct number of bytes from /dev/random
 
@@ -44,7 +45,8 @@ int main() {
   
   // writes the array to a file without using a loop
 
-  int write_fd = open("randfile", O_WRONLY | O_CREAT | O_EXCL, 444);
+  umask(0);
+  int write_fd = open("randfile", O_WRONLY | O_CREAT | O_EXCL, 0666);
   if (write_fd == -1) {
     printf("\nopen: %s\n", strerror(errno));
   }

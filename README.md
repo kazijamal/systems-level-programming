@@ -6,7 +6,7 @@
 - set the file creation permission mask
 - by default, created files are not given the exact permissions provided in the mode argument to open; some permissions are automatically shut off
 - default Linux mask is 002
-- umask is applied the folloing way:
+- umask is applied the following way:
 ```sh
 new_permissions = ~mask & mode
 ```

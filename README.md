@@ -1,5 +1,24 @@
 # systems-work
 
+## Tuesday 11/12/19
+
+### lseek - <unistd.h>
+- set the current position in an open file
+```c
+lseek(file_description, offset, whence)
+```
+- `offset`
+	- the number of bytes to move the position by; can be negative
+- `whence`
+	- where to measure the offset from
+		- SEEK_SET
+			- offset is evaluated from the beginning of the file
+		- SEEK_CUR
+			- offset is relative to the current position in the file
+		- SEEK_END
+			- offset is evaluated from the end of the file
+	- returns the number of bytes the current position is from the beginning of the file, or -1 (errno)
+
 ## Friday 11/8/19
 
 ### umask - <sys/stat.h>

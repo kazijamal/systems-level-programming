@@ -5,19 +5,18 @@ else
 endif
 
 all: main.o
-	$(CC) -o test_randfile main.o
+	$(CC) -o test_stat main.o
 
 main.o: main.c
 	$(CC) -c main.c
 
 run:
-	./test_randfile
+	./test_stat
 
 clean:
 	rm *.o
-	rm test_randfile
-	rm randfile
+	rm test_stat
 	rm *~
 
 memcheck:
-	valgrind --leak-check=yes ./test_randfile
+	valgrind --leak-check=yes ./test_stat

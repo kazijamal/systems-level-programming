@@ -5,7 +5,7 @@ else
 endif
 
 all: main.o
-	$(CC) -o test_stat main.o
+	$(CC) -o test_stat main.o -lm
 
 main.o: main.c
 	$(CC) -c main.c

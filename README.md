@@ -1,5 +1,29 @@
 # systems-work
 
+## Wednesday 11/13/19
+
+### stat - <sys/stat.h>
+- get information about a file (metadata)
+	- as storage got cheaper and operating systems got faster, more metadata exists
+	- for text files, metadata contains hash tables for the contents of the file, allowing for searches to return relevant returns based on content queries
+```c
+stat(path, stat_buffer)
+```
+- `stat_buffer`
+	- must be a pointer to a `struct stat`
+	- all the file information gets put into the stat buffer
+	- some of the fields in `struct stat`
+		- `st_size`
+			- file size in bytes
+		- `st_uid`, `st_gid`
+			- user id, group id
+		- `st_mode`
+			- file permissions of int type
+		- `st_atime`, `st_mtime`
+			- last access, last modification
+			- these are `time_t` variables; we can use functions in `time.h` to make sense of them
+				- `ctime(time)` returns a string based on time variable
+
 ## Tuesday 11/12/19
 
 ### lseek - <unistd.h>

@@ -6,6 +6,7 @@ There is a function called `stat`. It is used to get information about a file. W
 - Note
   - You may hardcode the file that your program uses, make sure the program works when I download and run it.
   - If only there were some file that you know I will have and where it is... hmm...
+  
 Once you have that, try the following:
 - Modify the size so it is printed out in human readable form (that is using B, KB, MB, GB).
   - You may want to look into the `sprintf` function to help.

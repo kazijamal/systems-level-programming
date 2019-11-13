@@ -1,5 +1,5 @@
 # mks65-stat
-There is a function called stat. It is used to get information about a file. Write a program that uses stat to display the following information about a file:
+There is a function called `stat`. It is used to get information about a file. Write a program that uses stat to display the following information about a file:
 - file size
 - mode (permissions)
 - time of last access (displayed in the following format: `Fri Oct 28 09:03:01 2016`

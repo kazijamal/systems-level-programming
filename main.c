@@ -36,7 +36,7 @@ int main() {
   printf("File size in bytes: %ld\n", file_size);
 
   mode_t file_mode = file.st_mode;
-  printf("Mode (permissions): %d\n", file_mode);
+  printf("Mode (permissions): %o\n", file_mode);
 
   time_t atime = file.st_atime;
   printf("Time of last access: %s", ctime(&atime));

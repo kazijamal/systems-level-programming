@@ -1,5 +1,26 @@
 # systems-work
 
+## Thursday 11/14/19
+
+### directories
+- a linux directory is a file containing the names of the files within the directory along with basic information, like file typehow
+- all directories have a size of 4096 bytes, no matter its contents (on Linux machines)
+- executable; allows to `cd` into a directory
+- moving a file is much faster than copying a file because you are just deleting from one directory file and adding to another when moving a file, compared to duplicating the file and writing data when copying a file
+### opendir - <dirent.h>
+- opens a directory file
+- this will not change the current working directory (cwd), it only allows your program to read the contents of the directory file
+```c
+opendir(path)
+```
+- returns a pointer to a directory stream (`DIR *`)
+### readdir - <dirent.h>
+```c
+readdir(dir_stream)
+```
+- returns a pointer to the next entry in a directory stream, or NULL if all entries have already been returned
+- `struct dirent` - <sys/types.h>
+
 ## Wednesday 11/13/19
 
 ### stat - <sys/stat.h>

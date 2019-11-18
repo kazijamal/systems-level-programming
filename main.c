@@ -82,7 +82,7 @@ int main() {
 
   while (curr != NULL) {
     if (curr->d_type == DT_DIR) {
-      printf("%s\n", curr->d_name);
+      printf("\t%s\n", curr->d_name);
     }
     curr = readdir(dir);
   }
@@ -96,7 +96,7 @@ int main() {
 
   while (curr != NULL) {
     if (curr->d_type == DT_REG) {
-      printf("%s\n", curr->d_name);
+      printf("\t%s\n", curr->d_name);
     }
     curr = readdir(dir);
   }

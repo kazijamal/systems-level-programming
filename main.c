@@ -43,6 +43,12 @@ int main() {
 
   char * dir_name = ".";
   DIR * dir = opendir(dir_name);
+
+  if (dir == NULL) {
+    printf("%s\n", strerror(errno));
+    return 0;
+  }
+  
   struct dirent * curr = readdir(dir);
 
   printf("Statistics for directory: %s\n", dir_name);
@@ -129,6 +135,8 @@ int main() {
     }
     curr = readdir(dir);
   }
+
+  closedir(dir);
   
   return 0;
 }

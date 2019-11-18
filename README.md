@@ -1,5 +1,33 @@
 # systems-work
 
+## Monday 11/18/19
+
+### command line arguments
+```c
+int main(int argc, char *argv[])
+```
+- program name is considered the first command line argument
+- `argc`
+	- number of command line arguments
+- `argv`
+	- array of command line arguments as strings
+
+### fgets - <stdio.h>
+- read in data from a file stream and store it in a string
+```c
+fgets(char * s, int n, FILE * f);
+```
+- reads at most `n`-1 characters from **file stream** `f` and stores it in `s`, appends NULL to the end
+- stops at newline, end of file, or the byte limit
+- file stream
+	- `FILE *` type, more complex than a file descriptor, allows for ***buffered*** input
+	- `stdin` is a `FILE *` variable
+	
+example:
+```c
+fgets(s, 100, stdin)
+```
+
 ## Thursday 11/14/19
 
 ### directories
@@ -9,9 +37,9 @@
 - moving a file is much faster than copying a file because you are just deleting from one directory file and adding to another when moving a file, compared to duplicating the file and writing data when copying a file
 ### opendir - <dirent.h>
 - opens a directory file
-- this will not change the current working directory (cwd), it only allows your program to read the contents of the directory file
+- this will not change the current working directory (cwd), it only alopendir(path)
+lows your program to read the contents of the directory file
 ```c
-opendir(path)
 ```
 - returns a pointer to a directory stream (`DIR *`)
 ### readdir - <dirent.h>

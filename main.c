@@ -41,16 +41,27 @@ void ls_format(char * d_name, char * ans) {
 
 int main(int argc, char *argv[]) {
 
-  char * dir_name = ".";
+  char dir_name[256];
 
+  // takes directory name from command line input if given
   if (argc > 1) {
-    dir_name = argv[1];
+    strcpy(dir_name, argv[1]);
+  }
+  // asks user for directory if not given as command line input
+  else {
+    printf("Enter a directory to scan: ");
+    fgets(dir_name, 256, stdin);
+    int i = 0;
+    while (dir_name[i] != '\n') {
+      i++;
+    }
+    dir_name[i] = '\0';
   }
   
   DIR * dir = opendir(dir_name);
 
   if (dir == NULL) {
-    printf("Opening directory %s: %s\n", dir_name, strerror(errno));
+    printf("Opening directory %s... %s\n", dir_name, strerror(errno));
     return 0;
   }
   

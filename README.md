@@ -1,5 +1,20 @@
 # systems-work
 
+## Tuesday 11/19/19
+
+### sscanf - <stdio.h>
+- reads in data from a string using a format string to determine types
+```c
+sscanf(char *s, char * format, void * var0, void * var1, ...)
+```
+- copies the data into each variable
+
+example:
+```c
+int x; float f; double d;
+sscanf(s, "%d %f %lf", &x, &f, &d);
+```
+
 ## Monday 11/18/19
 
 ### command line arguments

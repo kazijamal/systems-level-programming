@@ -27,9 +27,12 @@ void permissions(mode_t mode, char * ans) {
   strcpy(ans, rwx);
 }
 
-void ls_format(char * d_name, char * ans) {
+void ls_format(char * path, char * d_name, char * ans) {
   struct stat file;
-  stat(d_name, &file);
+  char currPath[256];
+  strcpy(currPath, path);
+  strcat(currPath, d_name);
+  stat(currPath, &file);
   char formatted_mode[10];
   permissions(file.st_mode, formatted_mode);
   char * formatted_atime = ctime(&(file.st_atime));
@@ -57,12 +60,24 @@ int main(int argc, char *argv[]) {
     }
     dir_name[i] = '\0';
   }
-  
-  DIR * dir = opendir(dir_name);
 
-  if (dir == NULL) {
+  // creates path for nested directories
+  DIR * dir = opendir(dir_name);
+  char path[256];
+  strcpy(path, dir_name);
+  strcat(path, "/");
+
+  while (dir == NULL) {
     printf("Opening directory %s... %s\n", dir_name, strerror(errno));
-    return 0;
+    printf("\nEnter a directory to scan: ");
+    dir_name[0] = '\0';
+    fgets(dir_name, 256, stdin);
+    int i = 0;
+    while (dir_name[i] != '\n') {
+      i++;
+    }
+    dir_name[i] = '\0';
+    dir = opendir(dir_name);
   }
   
   struct dirent * curr = readdir(dir);
@@ -76,7 +91,10 @@ int main(int argc, char *argv[]) {
 
   while (curr != NULL) {
     if (curr->d_type == DT_REG) {
-      stat(curr->d_name, &file);
+      char currPath[256];
+      strcpy(currPath, path);
+      strcat(currPath, curr->d_name);
+      stat(currPath, &file);
       dir_size += file.st_size;
     }
     curr = readdir(dir);
@@ -129,7 +147,7 @@ int main(int argc, char *argv[]) {
   while (curr != NULL) {
     if (curr->d_type == DT_DIR) {
       char ls_formatted[256];
-      ls_format(curr->d_name, ls_formatted);
+      ls_format(path, curr->d_name, ls_formatted);
       printf("%s\n", ls_formatted);
     }
     curr = readdir(dir);
@@ -141,7 +159,7 @@ int main(int argc, char *argv[]) {
   while (curr != NULL) {
     if (curr->d_type == DT_REG) {
       char ls_formatted[256];
-      ls_format(curr->d_name, ls_formatted);
+      ls_format(path, curr->d_name, ls_formatted);
       printf("%s\n", ls_formatted);
     }
     curr = readdir(dir);

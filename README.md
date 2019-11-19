@@ -1,4 +1,10 @@
 # mks65-dirinfo
+New and improved instructions:
+- Your program should handle user input as follows:
+  - If a command line argument is entered, use that as the directory to scan.
+  - If not, the program should ask the user to enter a directory to scan.
+  - In either case, don't assume your user knows what they are doing, if an invalid directory is entered, take reasonable action (*ahem* errno *cough cough*)
+
 Write a program that will gather various information about a directory, specifically:
 - list all the files in the directory
 - specify which files are directories (if any)

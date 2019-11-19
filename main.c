@@ -63,9 +63,6 @@ int main(int argc, char *argv[]) {
 
   // creates path for nested directories
   DIR * dir = opendir(dir_name);
-  char path[256];
-  strcpy(path, dir_name);
-  strcat(path, "/");
 
   while (dir == NULL) {
     printf("Opening directory %s... %s\n", dir_name, strerror(errno));
@@ -79,6 +76,10 @@ int main(int argc, char *argv[]) {
     dir_name[i] = '\0';
     dir = opendir(dir_name);
   }
+  
+  char path[256];
+  strcpy(path, dir_name);
+  strcat(path, "/");
   
   struct dirent * curr = readdir(dir);
 

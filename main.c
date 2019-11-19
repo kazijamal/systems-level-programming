@@ -39,13 +39,18 @@ void ls_format(char * d_name, char * ans) {
   strcpy(ans, formatted);
 }
 
-int main() {
+int main(int argc, char *argv[]) {
 
   char * dir_name = ".";
+
+  if (argc > 1) {
+    dir_name = argv[1];
+  }
+  
   DIR * dir = opendir(dir_name);
 
   if (dir == NULL) {
-    printf("%s\n", strerror(errno));
+    printf("Opening directory %s: %s\n", dir_name, strerror(errno));
     return 0;
   }
   
@@ -66,6 +71,8 @@ int main() {
     curr = readdir(dir);
   }
 
+  // print out the size in a more readable format
+  
   float float_dir_size = (float) dir_size;
   while (float_dir_size >= 1024) float_dir_size /= 1024;
   char readable_dir_size[100];
@@ -100,13 +107,6 @@ int main() {
     }
     curr = readdir(dir);
   }
-
-  // POSSIBLE ENHANCEMENTS
-  
-
-  // recursively list the files in any subdirectories, update the total to include the total size of subdirectories
-
-  // print out the size in a more readable format (like using KB, MB, GB for -byte prefixes)
 
   // make it look more like $ ls -l
 

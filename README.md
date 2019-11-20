@@ -1,5 +1,13 @@
 # systems-work
 
+## Wednesday 11/20/19
+
+### processes
+- every running program is a process
+- a process can create subprocesses, but these are no different from regular processes
+- a processor can handle 1 process per cycle (per core)
+- "multitasking" appears to happen because the processor switches between all the active processes quickly
+
 ## Tuesday 11/19/19
 
 ### sscanf - <stdio.h>

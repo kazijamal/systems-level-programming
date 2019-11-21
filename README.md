@@ -1,5 +1,31 @@
 # systems-work
 
+## Thursday 11/21/19
+
+### signals
+- limited way of sending information to a process
+- sends an integer value to a process
+```sh
+$ kill
+```
+- command line utility to send a signal to a process
+```sh
+$ kill pid
+```
+- sends signal 15 (`SIGTERM`) to `pid`
+```sh
+$ kill -signal pid
+```
+- sends `signal` to `pid`
+```sh
+$ killall [-signal] process_name
+```
+
+### signals in c programs - <signal.h>
+```c
+kill(pid, signal)
+```
+
 ## Wednesday 11/20/19
 
 ### processes

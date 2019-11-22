@@ -1,5 +1,20 @@
 # systems-work
 
+## Friday 11/22/19
+
+### signal handling in c programs - <signal.h>
+`sighandler`
+- to intercept signals in a c program you must create a signal handling function
+- some signals (like SIGKILL, SIGSTOP) cannot be caught
+```c
+static void sighandler(int signo)
+```
+- must be `static`, must be `void`, must take a single `int` parameter
+- `static`
+	- static values in c exist outside hte normal call stack, they can be accessed regardless of the function at the top
+	- for variables, this also means they retain their value even if the function they are declared in has ended
+	- static values (variables and functions) can only be accessed from within the file they are declared (unlike global values)
+
 ## Thursday 11/21/19
 
 ### signals

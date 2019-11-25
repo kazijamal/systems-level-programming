@@ -1,5 +1,35 @@
 # systems-work
 
+## Monday 11/25/19
+
+### the `exec` family - <unistd.h>
+- a group of c functions that can be used to run other programs
+- replaces the current process with the new program
+```c
+execl(path, command, arg0, arg1 ... NULL)
+```
+- `path`
+	- the path to the program (ex: `"/bin/ls"`)
+- `command`
+	- the name of the program (ex: `"ls"`)
+- `arg0 ...`
+	- each command line argument you wish to give the program (ex: `"-a"`, `"-l"`)
+	- the last argument must be `NULL`
+```c
+excelp(path, command, arg0, arg1 ... NULL)
+```
+- works like `excel`, except it uses the $PATH environment variable for command
+```c
+execvp(path, argument_array)
+```
+- `argument_array`
+	- array of strings containing the arguments to the command
+	- `argument_array[0]` must be the name of the program
+	- last entry must be NULL
+
+### strsep - <string.h>
+- parse a string with a common delimiter
+
 ## Friday 11/22/19
 
 ### signal handling in c programs - <signal.h>

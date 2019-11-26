@@ -1,5 +1,27 @@
 # systems-work
 
+## Tuesday 11/26/19
+
+### strsep - <string.h>
+- parse a string with a common delimiter
+```c
+strsep(source, delimiters)
+```
+- locates the first occurrence of any of the specified `delimiters` in a string and replaces it with `NULL`
+- `delimiters` is a string, each character is interpreted as a distinct delimiter
+- returns the beginning of the original string, sets `source` to the string starting at 1 index past the location of the new `NULL`
+- 
+example:
+```c
+char line[100] = "woah-this-is-cool";
+char *curr = line;
+char * token;
+token = strsep(&curr, "-");
+```
+- replaces the `-` after "woah" with `NULL`
+- returns a pointer to the `w` in "woah"
+- sets `curr` to point to the t in "this is cool"
+
 ## Monday 11/25/19
 
 ### the `exec` family - <unistd.h>
@@ -26,9 +48,6 @@ execvp(path, argument_array)
 	- array of strings containing the arguments to the command
 	- `argument_array[0]` must be the name of the program
 	- last entry must be NULL
-
-### strsep - <string.h>
-- parse a string with a common delimiter
 
 ## Friday 11/22/19
 

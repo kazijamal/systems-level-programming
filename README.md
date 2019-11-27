@@ -1,5 +1,21 @@
 # systems-work
 
+## Wednesday 11/27/19
+
+### managing sub-processes
+#### fork() - <unistd.h>
+- creates a separate process based on the current one, the new process is called a child, the original is the parent
+- the child process is a duplicate of the parent process
+- all parts of the parent process are copied, including stack and heap memory, and the file table
+- returns 0 to the child and the child's pid, or -1 (errno) to the parent
+#### wait() - <sys/wait.h>
+- stops a parent process from running until any child has exited
+- returns the pid of the child that exited, or -1 (errno), and gathers information about the child process (this is called raping)
+- if multiple child processes exit, an arbitrary one will be reaped
+```c
+wait(status)
+```
+
 ## Tuesday 11/26/19
 
 ### strsep - <string.h>

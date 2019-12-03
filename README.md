@@ -1,2 +1,2 @@
 # mks65-project1_shell
-Matthew Chan and Kazi Jamal
+## kmsh by Kazi Jamal and Matthew Chan

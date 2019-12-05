@@ -43,6 +43,7 @@ void fork_exec(char ** args) {
   int cpid = fork();
   if (!cpid) {
     if (execvp(args[0], args) == -1) {
+      printf("%s: command not found\n", args[0]);
       exit(0);
     }
   }

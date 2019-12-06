@@ -1,8 +1,53 @@
 # systems-work
 
+## Friday 12/6/19
+
+### file redirection
+- changing the usual input/output behavior of a program
+- command line redirection
+```sh
+>
+```
+- redirects `stdout` to a file
+- overwrites the contents of the file
+```sh
+>>
+```
+- redirects `stdout` to a file by appending
+```sh
+2>
+```
+- redirects `stderror` to a file
+- overwrites the file (`2>>` appends)
+```sh
+&>
+```
+- redirects `stdout` and `stderror`
+- overwrites the file (`&>>` appends)
+
+### command line redirection
+```sh
+<
+```
+- redirect `stdin`from a file
+
+### dup2 - <unistd.h>
+```c
+dup2(fd1, fd2)
+```
+- redirects `fd2` to `fd1`
+- any use of `fd2` will now act on the file for `fd1`
+
+### dup - <unistd.h>
+```c
+dup(fd)
+```
+- duplicates an existing entry in the file table
+- returns a new file description for the duplicate entry
+
 ## Monday 12/2/19
 
-#### wait() - <sys/wait.h>
+### wait() - <sys/wait.h>
 - stops a parent process from running until any child has exited
 - returns the pid of the child that exited, or -1 (errno), and gathers information about the child process (this is called raping)
 - if multiple child processes exit, an arbitrary one will be reaped
@@ -18,8 +63,7 @@ wait(status)
 
 ## Wednesday 11/27/19
 
-### managing sub-processes
-#### fork() - <unistd.h>
+### fork() - <unistd.h>
 - creates a separate process based on the current one, the new process is called a child, the original is the parent
 - the child process is a duplicate of the parent process
 - all parts of the parent process are copied, including stack and heap memory, and the file table

@@ -1,0 +1,6 @@
+ls -l
+cd test
+ls -l;cat text.txt
+cd ..
+ls -l
+exit

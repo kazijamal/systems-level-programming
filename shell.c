@@ -12,7 +12,7 @@ int main() {
   int size = 256;
   char input[size];
   
-  while (strcmp(input, "exit")) {
+  while (1) {
     
     char username[LOGIN_NAME_MAX];
     getlogin_r(username, LOGIN_NAME_MAX);

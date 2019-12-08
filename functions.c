@@ -53,8 +53,11 @@ void fork_exec(char ** args) {
 }
 
 void run_command(char * command) {
-  char ** args = parse_args(command, " "); 
-  if (!strcmp(args[0], "cd")) {
+  char ** args = parse_args(command, " ");
+  if (!strcmp(args[0], "exit")) {
+    exit(0);
+  }
+  else if (!strcmp(args[0], "cd")) {
     chdir(args[1]);
   }
   else {

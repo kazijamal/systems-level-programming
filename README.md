@@ -107,9 +107,9 @@ execl(path, command, arg0, arg1 ... NULL)
 	- each command line argument you wish to give the program (ex: `"-a"`, `"-l"`)
 	- the last argument must be `NULL`
 ```c
-excelp(path, command, arg0, arg1 ... NULL)
+execlp(path, command, arg0, arg1 ... NULL)
 ```
-- works like `excel`, except it uses the $PATH environment variable for command
+- works like `execl`, except it uses the $PATH environment variable for command
 ```c
 execvp(path, argument_array)
 ```

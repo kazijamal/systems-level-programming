@@ -33,6 +33,9 @@ char ** parse_args(char * line, char * delimiter) {
   int i = 0;
   while (curr != NULL) {
     char * curr_arg = strsep(&curr, delimiter);
+    if (strcmp(curr_arg, "") == 0) {
+      continue;
+    }
     ans[i++] = curr_arg;
   }
   ans[i] = NULL;

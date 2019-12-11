@@ -1,5 +1,25 @@
 # systems-work
 
+## Wednesday 12/11/19
+
+### pipe
+- a conduit between 2 separate processes on the same computer
+- pipes have 2 ends, a read end and a write end
+- pipes act just like files (i.e. you can `read()` and `write()` to send any kind of data)
+- pipes exist in memory
+- unnamed pipes have no external identifier
+
+### pipe - <unistd.h>
+- create an unnamed pipe
+- returns 0 if the pipe was created, -1 if not
+```c
+pipe(descriptors)
+```
+- `descriptors`
+	- array that will contain the descriptors for each end of the pipe; must be an int array of size 2
+	- `descriptors[0]` is the read end
+	- `descriptors[1]` is the write end
+
 ## Friday 12/6/19
 
 ### file redirection

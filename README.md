@@ -1,5 +1,20 @@
 # systems-work
 
+## Thursday 12/12/19
+
+### named pipes
+- FIFOs
+- same as unnamed pipes except FIFOs have a name that can be used to identify them via different programs
+- like unnamed pipes, FIFOs are unidirectional
+- `mkfifo`
+	- shell command to make a FIFO
+	
+### mkfifo - <sys/types.h> <sys/stat.h>
+- c function to create a FIFO
+- returns 0 on success and -1 on failure
+- once created, the FIFO acts like a regular file, and we can use open, read, write, and close on it
+- FIFOs will block on open until both ends of the pipe have a connection
+
 ## Wednesday 12/11/19
 
 ### pipe

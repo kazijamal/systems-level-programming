@@ -15,24 +15,26 @@ void remove_newline(char * input) {
   input[i] = '\0';
 }
 
-int num_args(char * line, char * delimiter) {
+int num_args(char * line, char delimiter) {
   int ans = 0;
-  char linecpy[strlen(line)];
-  strcpy(linecpy, line);
-  char * curr = linecpy;
-  while (curr != NULL) {
-    strsep(&curr, delimiter);
-    ans++;
+  int i;
+  for (i = 0; line[i] != '\0'; i++) {
+    if (line[i] == delimiter) {
+      ans++;
+    }
   }
   return ans;
 }
 
-char ** parse_args(char * line, char * delimiter) {
+char ** parse_args(char * line, char delimiter) {
   char ** ans = malloc(sizeof(char*) * (num_args(line, delimiter) + 1));
   char * curr = line;
   int i = 0;
+  char strdelim[2];
+  strdelim[0] = delimiter;
+  strdelim[1] = '\0';
   while (curr != NULL) {
-    char * curr_arg = strsep(&curr, delimiter);
+    char * curr_arg = strsep(&curr, strdelim);
     if (strcmp(curr_arg, "") == 0) {
       continue;
     }
@@ -47,6 +49,7 @@ void fork_exec(char ** args) {
   if (!cpid) {
     if (execvp(args[0], args) == -1) {
       printf("%s: command not found\n", args[0]);
+      free(args);
       exit(0);
     }
   }
@@ -56,8 +59,9 @@ void fork_exec(char ** args) {
 }
 
 void run_command(char * command) {
-  char ** args = parse_args(command, " ");
+  char ** args = parse_args(command, ' ');
   if (!strcmp(args[0], "exit")) {
+    free(args);
     exit(0);
   }
   else if (!strcmp(args[0], "cd")) {
@@ -70,7 +74,7 @@ void run_command(char * command) {
 }
 
 void run_commands(char * line, int num_commands) {
-  char ** commands = parse_args(line, ";");
+  char ** commands = parse_args(line, ';');
   int i;
   for (i = 0; i < num_commands; i++) {
     run_command(commands[i]);

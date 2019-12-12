@@ -1,8 +1,8 @@
 void remove_newline(char * input);
 
-int num_args(char * line, char * delimiter);
+int num_args(char * line, char delimiter);
 
-char ** parse_args(char * line, char * delimiter);
+char ** parse_args(char * line, char delimiter);
 
 void fork_exec(char ** args);
 

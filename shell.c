@@ -31,7 +31,7 @@ int main() {
       run_command(input);
     }
     else {
-      run_commands(input, num_args(input, ";"));
+      run_commands(input, num_args(input, ';'));
     }
     
   }

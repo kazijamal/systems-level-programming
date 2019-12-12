@@ -18,6 +18,9 @@ functions.o: functions.c
 run:
 	./test_shell
 
+testcommands:
+	./test_shell < commands
+
 clean:
 	rm *.o
 	rm test_shell

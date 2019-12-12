@@ -23,8 +23,8 @@ Bugs:
 - Occasionally, the unicorn command will fail, opening a great chasm in the earth and summoning the demon Beelzebub, who will proceeded to unleash his wrath and begin his reign of terror.
 	
 Files & Function Headers:
-parse.c
-	Handles all line parsing fucntions
+- parse.c
+  - Handles all line parsing functions
 	/*======== int count_tokens() ==========
 	Inputs:  char *line
         	  char delim 
@@ -54,8 +54,8 @@ parse.c
 	Terminating '\0' is placed at a new location if necessary.
 	====================*/
 
-dwsh.c
-- Handles the forking an executing of commands...
+- dwsh.c
+  - Handles the forking an executing of commands...
 
 magical.c
 - UNOCORNS!	

@@ -65,7 +65,7 @@ void run_command(char * command) {
     free(args);
     exit(0);
   }
-  else if (!strcmp(args[0], "cd")) {
+  if (!strcmp(args[0], "cd")) {
     chdir(args[1]);
   }
   else {

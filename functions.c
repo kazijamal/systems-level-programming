@@ -23,11 +23,12 @@ int num_args(char * line, char delimiter) {
       ans++;
     }
   }
+  ans += 1;
   return ans;
 }
 
 char ** parse_args(char * line, char delimiter) {
-  char ** ans = malloc(sizeof(char*) * (num_args(line, delimiter) + 1));
+  char ** ans = malloc(sizeof(char *) * (num_args(line, delimiter) + 1));
   char * curr = line;
   int i = 0;
   char strdelim[2];

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
+#include <fcntl.h>
 #include <unistd.h>
 #include <limits.h>
 #include <sys/wait.h>
@@ -67,6 +68,17 @@ void run_command(char * command) {
   }
   if (!strcmp(args[0], "cd")) {
     chdir(args[1]);
+  }
+  if ((sizeof(args)/sizeof(char *))>1 && !strcmp(args[1], ">")) {
+    char ** redirOut = parse_args(command, '>');
+    printf("^$&^$&*^(: %s\n", redirOut[2]);
+    int fd = open(redirOut[2], O_WRONLY);
+    if (fd < 0) {
+		  printf("error %d: %s\n", errno, strerror(errno));
+	  }
+    dup2(fd, 2);
+    char ** redirArgs = parse_args(redirOut[0], ' ');
+    fork_exec(redirArgs);
   }
   else {
     fork_exec(args);

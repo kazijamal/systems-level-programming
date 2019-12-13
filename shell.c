@@ -19,7 +19,7 @@ int main() {
     
     char hostname[HOST_NAME_MAX];
     gethostname(hostname, HOST_NAME_MAX);
-		  
+
     char cwd[PATH_MAX];
     getcwd(cwd, sizeof(cwd));
 

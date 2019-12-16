@@ -10,12 +10,9 @@
 - Waits for executed programs to exit before reading the next commands
 - Reads and separates multiple line commands on one line with `;`
 - Simple redirection using `>` (redirecting stdout) and `<` (redirecting stdin)
+- Double redirection
 - Simple pipes using `|`
 - Displays username, hostname, and current working directory on prompt
-
-### Attempted:
-
-- Double redirect
 
 ### Bugs:
 

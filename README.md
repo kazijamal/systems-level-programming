@@ -1,61 +1,62 @@
 # mks65-project1_shell
-KMSH
-by Kazi Jamal and Matthew Chan
 
-Features:
-- Forks and executes commands!
-- Parses multiple commands on one line!
-- Redirects using >, <!
-- Guaranteed to regrow hair!
-- Can summon a winged unicorn for fast & magical transit!
+## KMSH
 
-Attempted:
-- The following did not end up working, but have been left in the code, commented out.
-- Could not get pipes to work
-- Tried to implement >>, but it kept overwriting the file
-- Looked at replacing ~/ with home directory, got seg faults
-- Was unable to have the "puppy" command produce a puppy and eject it from the optical drive.
+## by Kazi Jamal and Matthew Chan
 
-Bugs:
-- Putting two ;'s next to each other will break the parser
-- Redirecting to a file that does not exist occasionally does not work.
-- Hair regrowth function may result in a seg fault.
-- Occasionally, the unicorn command will fail, opening a great chasm in the earth and summoning the demon Beelzebub, who will proceeded to unleash his wrath and begin his reign of terror.
-	
-Files & Function Headers:
-- parse.c
-  - Handles all line parsing functions
-	/*======== int count_tokens() ==========
-	Inputs:  char *line
-        	  char delim 
-	Returns: Number of tokens in line separated by delim
+### Features:
 
-	Counts the number of times the character delim appears in the
-	 string line
-	The number of tokens is 1 more than the number of appearences 
-	of delim
-	If delim does not appear, 1 is returned
-	====================*/
+- Reads a line at a time, parses the line to separate the command from its arguments, and forks and executes the command
+- Waits for executed programs to exit before reading the next commands
+- Reads and separates multiple line commands on one line with `;`
+- Simple redirection using `>` (redirecting stdout) and `<` (redirecting stdin)
+- Simple pipes using `|`
+- Displays username, hostname, and current working directory on prompt
 
-	/*======== char ** parse_line() ==========
-	Inputs:  char *line 
-	Returns: Array of strings where each entry is a token 
-	separated by delim
+### Attempted:
 
-	If line contains multiple tokens separated by delim, this 
-	function will put each token into an array of strings
-	====================*/
+- Double redirect
 
-	/*======== char * trim() ==========
-	Inputs:  char *line 
-	Returns: Pointer to the beginning of line
+### Bugs:
 
-	Removes leading and trailing whitespace on the string line.
-	Terminating '\0' is placed at a new location if necessary.
-	====================*/
+- Occasionally requires exit command multiple times to exit
 
-- dwsh.c
-  - Handles the forking an executing of commands...
+### Files & Function Headers:
 
-magical.c
-- UNOCORNS!	
+#### shell.c
+
+- displays username, hostname, and current working directory and gets user input to run as a command
+
+#### functions.c
+
+- handles parsing and executing commands
+- `char * strip()`
+  - Inputs: char \*input
+  - Returns: Pointer to the beginning of input
+  - Removes leading and trailing whitespace from the input
+- `char ** parse_args()`
+  - Inputs: char \*line, char \*delimiter
+  - Returns: Array of strings where each entry is a token separated by a delimiter
+  - If line contains multiple tokens separated by delimiter, this function will put each token into an array of strings
+- `int contains_redirect()`
+  - Inputs: char \*input
+  - Returns: 0 or 1
+  - If input contains either < or > redirect character, this function returns 1, otherwise it returns 0
+- `void fancy_exec()`
+  - Inputs: char \*\*args
+  - Checks if command is not found, else executes command from given arguments
+- `void pipe_func()`
+  - Inputs: char \*command
+  - Executes command containing pipe
+  - Uses stdout from first command as stdin for second command
+- `void redirect_stdout()`
+  - Inputs: char \*command
+  - Executes command containing stdout redirection
+  - Redirects stdout from command into a newly created and written file
+- `void redirect_stdin()`
+  - Inputs: char \*command
+  - Executes command containing stdin redirection
+  - Redirects stdin into command from read file
+- `void run_command()`
+  - Inputs: char \*command
+  - Executes any given command by calling aforementioned functions in various conditional statements

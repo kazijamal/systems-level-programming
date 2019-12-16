@@ -26,16 +26,9 @@ int main() {
     
     printf("%s@%s:%s$ ", username, hostname, cwd);
     fgets(input, size, stdin);
-    remove_newline(input);
-    if (strchr(input, ';') == NULL) {
-      run_command(input);
-    }
-    else {
-      run_commands(input, num_args(input, ';'));
-    }
     
+    run_command(input);
   }
   
   return 0;
-  
 }

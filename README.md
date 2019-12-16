@@ -32,25 +32,28 @@
 - handles parsing and executing commands
 - `char * strip()`
   - Inputs: char \*input
-  - Returns:
+  - Returns: String which is stripped of whitespace and newline
+  - Removes whitespace from beginning and end of input, and removes newlines from end of input
 - `char ** parse_args()`
-  - Inputs: char *line, char *delimiter
-  - Returns:
+  - Inputs: char \*line, char \*delimiter
+  - Returns: Array of strings where each entry is a token separated by a delimiter
+  - If line contains multiple tokens separated by delimiter, this function will put each token into an array of strings
 - `int contains_redirect()`
-  - Inputs:
-  - Returns:
+  - Inputs: char \*input
+  - Returns: 1 if input has redirect character else 0
+  - If input contains either < or > redirect character, this function returns 1, otherwise it returns 0
 - `void fancy_exec()`
-  - Inputs:
-  - Returns:
+  - Inputs: char \*\*args
+  -
 - `void pipe_func()`
-  - Inputs:
-  - Returns:
+  - Inputs: char \*command
+  -
 - `void redirect_stdout()`
-  - Inputs:
-  - Returns:
+  - Inputs: char \*command
+  -
 - `void redirect_stdin()`
-  - Inputs:
-  - Returns:
+  - Inputs: char \*command
+  -
 - `void run_command()`
-  - Inputs:
-  - Returns:
+  - Inputs: char \*command
+  -

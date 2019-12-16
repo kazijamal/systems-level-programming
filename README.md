@@ -1,5 +1,48 @@
 # systems-work
 
+## Monday 12/16/19
+
+### shared memory
+
+- `<sys/shm.h>, <sys/ipc.h>, <sys/types.h>`
+- a segment of heap memory that can be accessed by multiple processes.
+- shared memory is accessed via a key that is known by any process that needs to access it.
+- shared memory does not get released when a program exits.
+- 5 shared memory operations
+  - create the segment (happens once) - `shmget`
+  - access the segment (happens once per process) - `shmget`
+  - attach the segment to a variable (once per process) - `shmat`
+  - detach the segment from a variable (once per process) - `shmdt`
+  - remove the segment (happens once) - `shmctl`
+
+```c
+#include <sys/ipc.h>
+
+#define KEY 24601
+
+int main() {
+  int * data;
+  int shmd;
+
+  shmget(KEY, sizeof(int), IPC_CREAT | 0640);
+  printf("shmd: %d\n"); // 131072
+
+  data = shmat(shmd, 0, 0);
+
+  printf("*data: %d\n", *data); // 0
+  *data = *data + 10;
+  printf("*data: %d\n", *data); // 10
+
+  shmdt(data); // shared memory still exists but pointer is removed
+  printf("*data: %d\n", *data); // segmentation fault
+
+  return 0;
+}
+```
+
+`ipcs -m`
+`ipcrm -m MEM_KEY`
+
 ## Thursday 12/12/19
 
 ### named pipes

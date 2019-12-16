@@ -8,6 +8,12 @@
 #include <sys/wait.h>
 #include "headers.h"
 
+/*======= char * strip() ===============================
+Inputs: char *input
+Returns: Pointer to the beginning of input
+
+Removes leading and trailing whitespace from the input
+========================================================*/
 char * strip(char * input) {
   while (*input == ' ') {
     input++;
@@ -22,6 +28,14 @@ char * strip(char * input) {
   return input;
 }
 
+/*======= char ** parse_args() =========================
+Inputs: char *line, char *delimiter
+Returns: Array of strings where each entry is a token
+    separated by a delimiter
+
+If line contains multiple tokens separated by delimiter, 
+this function will put each token into an array of strings
+========================================================*/
 char ** parse_args(char * line, char * delimiter) {
   char ** ans = malloc(256);
   char * curr = line;
@@ -37,6 +51,13 @@ char ** parse_args(char * line, char * delimiter) {
   return ans;
 }
 
+/*======= int contains_redirect() ======================
+Inputs: char *input
+Returns: 0 or 1
+
+If input contains either < or > redirect character, this 
+function returns 1, otherwise it returns 0
+========================================================*/
 int contains_redirect(char * input) {
   if (strchr(input, '>')) {
     return 1;
@@ -47,6 +68,13 @@ int contains_redirect(char * input) {
   return 0;
 }
 
+/*======= int contains_double_redirect() ===============
+Inputs: char *input
+Returns: 0 or 1
+
+If input contains both < and > redirect character, this 
+function returns 1, otherwise it returns 0
+========================================================*/
 int contains_double_redirect(char * input) {
   if (strchr(input, '>')) {
     if (strchr(input, '<')) {
@@ -56,6 +84,12 @@ int contains_double_redirect(char * input) {
   return 0;
 }
 
+/*======= void fancy_exec() ============================
+Inputs: char **args
+
+Checks if command is not found, else executes command from 
+given arguments
+========================================================*/
 void fancy_exec(char ** args) {
   if (execvp(args[0], args) == -1) {
     if (strcmp(args[0], "cd")) {
@@ -65,6 +99,12 @@ void fancy_exec(char ** args) {
   }
 }
 
+/*======= void pipe_func() =============================
+Inputs: char *command
+Executes command containing pipe
+
+Uses stdout from first command as stdin for second command
+========================================================*/
 void pipe_func(char * command) {
   char ** commands = parse_args(command, "|");
   char * pipein = strip(commands[0]);
@@ -82,6 +122,13 @@ void pipe_func(char * command) {
   pclose(write);
 }
 
+/*======= void redirect_stdout() =======================
+Inputs: char *command
+
+Executes command containing stdout redirection
+Redirects stdout from command into a newly created and 
+written file
+========================================================*/
 void redirect_stdout(char * command) {
   char ** commands = parse_args(command, ">");
   int writefile = open(strip(commands[1]), O_CREAT | O_WRONLY, 0644);
@@ -91,6 +138,12 @@ void redirect_stdout(char * command) {
   close(writefile);
 }
 
+/*======= void redirect_stdin() ========================
+Inputs: char *command
+
+Executes command containing stdin redirection
+Redirects stdin into command from read file
+========================================================*/
 void redirect_stdin(char * command) {
   char ** commands = parse_args(command, "<");
   int readfile = open(strip(commands[1]), O_RDONLY, 0644);
@@ -100,6 +153,11 @@ void redirect_stdin(char * command) {
   close(readfile);
 }
 
+/*======= void double_redirect() =======================
+Inputs: char *command
+
+Executes command containing both stdout and stdin redirection
+========================================================*/
 void double_redirect(char * command) {
   char ** readirectIN = parse_args(command, "<");
   char ** readirectOUT = parse_args(strip(readirectIN[1]), ">");
@@ -116,6 +174,12 @@ void double_redirect(char * command) {
   close(writefile);
 }
 
+/*======= void run_command() ===========================
+Inputs: char *command
+
+Executes any given command by calling aforementioned 
+functions in various conditional statements
+========================================================*/
 void run_command(char * command) {
   command = strip(command);
   char ** commands = parse_args(command, ";");

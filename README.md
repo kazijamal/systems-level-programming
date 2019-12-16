@@ -42,6 +42,10 @@
   - Inputs: char \*input
   - Returns: 0 or 1
   - If input contains either < or > redirect character, this function returns 1, otherwise it returns 0
+- `int contains_double_redirect()`
+  - Inputs: char \*input
+  - Returns: 0 or 1
+  - If input contains both < and > redirect character, this function returns 1, otherwise it returns 0
 - `void fancy_exec()`
   - Inputs: char \*\*args
   - Checks if command is not found, else executes command from given arguments
@@ -57,6 +61,9 @@
   - Inputs: char \*command
   - Executes command containing stdin redirection
   - Redirects stdin into command from read file
+- `void double_redirect()`
+  - Inputs: char \*command
+  - Executes command containing both stdout and stdin redirection
 - `void run_command()`
   - Inputs: char \*command
   - Executes any given command by calling aforementioned functions in various conditional statements

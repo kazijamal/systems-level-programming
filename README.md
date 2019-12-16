@@ -31,10 +31,10 @@
 
 - handles parsing and executing commands
 - `char * strip()`
-  - Inputs: char \* input
+  - Inputs: char \*input
   - Returns:
 - `char ** parse_args()`
-  - Inputs:
+  - Inputs: char *line, char *delimiter
   - Returns:
 - `int contains_redirect()`
   - Inputs:

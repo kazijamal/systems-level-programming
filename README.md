@@ -20,6 +20,7 @@
 ### Bugs:
 
 - Occasionally requires exit command multiple times to exit
+- When redirecting test commmands as stdin to the shell program, the prompt with username, hostname, and current working directory is displayed multiple times
 
 ### Files & Function Headers:
 

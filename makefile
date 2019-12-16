@@ -19,7 +19,7 @@ run:
 	./test_shell
 
 testcommands:
-	./test_shell < commands
+	./test_shell < TEST_COMMANDS
 
 clean:
 	rm *.o

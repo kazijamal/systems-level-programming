@@ -14,6 +14,10 @@
 - Simple pipes using `|`
 - Displays username, hostname, and current working directory on prompt
 
+### Attempted But Unsuccessful:
+
+- N/A
+
 ### Bugs:
 
 - Occasionally requires exit command multiple times to exit

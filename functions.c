@@ -47,6 +47,15 @@ int contains_redirect(char * input) {
   return 0;
 }
 
+int contains_double_redirect(char * input) {
+  if (strchr(input, '>')) {
+    if (strchr(input, '<')) {
+      return 1;
+    }
+  }
+  return 0;
+}
+
 void fancy_exec(char ** args) {
   if (execvp(args[0], args) == -1) {
     if (strcmp(args[0], "cd")) {
@@ -91,6 +100,22 @@ void redirect_stdin(char * command) {
     close(readfile);
 }
 
+void double_redirect(char * command) {
+  char ** readirectIN = parse_args(command, "<");
+  char ** readirectOUT = parse_args(strip(readirectIN[1]), ">");
+
+  int readfile = open(strip(readirectOUT[0]), O_RDONLY, 0644);
+  dup2(readfile, STDIN_FILENO);
+  int writefile = open(strip(readirectOUT[1]), O_CREAT | O_WRONLY, 0644);
+  dup2(writefile, STDOUT_FILENO);
+
+  char ** args = parse_args(strip(readirectIN[0]), " ");
+  fancy_exec(args);
+
+  close(readfile);
+  close(writefile);
+}
+
 void run_command(char * command) {
   command = strip(command);
   char ** commands = parse_args(command, ";");
@@ -115,11 +140,14 @@ void run_command(char * command) {
 
       int childPID = fork();
       if (!childPID) {
-        if (strchr(commands[i], '>')) {
-          redirect_stdout(commands[i]);
+        if (contains_double_redirect(commands[i])) {
+          double_redirect(commands[i]);
         }
         else if (strchr(commands[i], '<')) {
           redirect_stdin(commands[i]);
+        }
+        else if (strchr(commands[i], '>')) {
+          redirect_stdout(commands[i]);
         }
         else {
           fancy_exec(args);

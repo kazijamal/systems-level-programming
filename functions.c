@@ -66,38 +66,38 @@ void fancy_exec(char ** args) {
 }
 
 void pipe_func(char * command) {
-    char ** commands = parse_args(command, "|");
-    char * pipein = strip(commands[0]);
-    char * pipeinto = strip(commands[1]);
-    char currline[256];
-    char input[256];
-    FILE *read = popen(pipein, "r");
-    while(fgets(currline, 256, read)) {
-        currline[sizeof(currline) - 1] = '\0';
-        strcat(input, currline);
-    }
-    pclose(read);
-    FILE *write = popen(pipeinto, "w");
-    fprintf(write, "%s", input);
-    pclose(write);
+  char ** commands = parse_args(command, "|");
+  char * pipein = strip(commands[0]);
+  char * pipeinto = strip(commands[1]);
+  char currline[256];
+  char input[256];
+  FILE *read = popen(pipein, "r");
+  while(fgets(currline, 256, read)) {
+    currline[sizeof(currline) - 1] = '\0';
+    strcat(input, currline);
+  }
+  pclose(read);
+  FILE *write = popen(pipeinto, "w");
+  fprintf(write, "%s", input);
+  pclose(write);
 }
 
 void redirect_stdout(char * command) {
-    char ** commands = parse_args(command, ">");
-    int writefile = open(strip(commands[1]), O_CREAT | O_WRONLY, 0644);
-    dup2(writefile, STDOUT_FILENO);
-    char ** args = parse_args(strip(commands[0]), " ");
-    fancy_exec(args);
-    close(writefile);
+  char ** commands = parse_args(command, ">");
+  int writefile = open(strip(commands[1]), O_CREAT | O_WRONLY, 0644);
+  dup2(writefile, STDOUT_FILENO);
+  char ** args = parse_args(strip(commands[0]), " ");
+  fancy_exec(args);
+  close(writefile);
 }
 
 void redirect_stdin(char * command) {
-    char ** commands = parse_args(command, "<");
-    int readfile = open(strip(commands[1]), O_RDONLY, 0644);
-    dup2(readfile, STDIN_FILENO);
-    char ** args = parse_args(strip(commands[0]), " ");
-    fancy_exec(args);
-    close(readfile);
+  char ** commands = parse_args(command, "<");
+  int readfile = open(strip(commands[1]), O_RDONLY, 0644);
+  dup2(readfile, STDIN_FILENO);
+  char ** args = parse_args(strip(commands[0]), " ");
+  fancy_exec(args);
+  close(readfile);
 }
 
 void double_redirect(char * command) {

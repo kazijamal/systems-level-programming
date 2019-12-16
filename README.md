@@ -44,7 +44,7 @@
   - If input contains either < or > redirect character, this function returns 1, otherwise it returns 0
 - `void fancy_exec()`
   - Inputs: char \*\*args
-  -
+  - Checks if command is not found, else executes command from given arguments
 - `void pipe_func()`
   - Inputs: char \*command
   - Executes command containing pipe

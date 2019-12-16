@@ -47,6 +47,15 @@ int contains_redirect(char * input) {
   return 0;
 }
 
+void fancy_exec(char ** args) {
+  if (execvp(args[0], args) == -1) {
+    if (strcmp(args[0], "cd")) {
+      printf("%s: command not found\n", args[0]);
+    }
+    free(args);
+  }
+}
+
 void run_command(char * command) {
   command = strip(command);
   char ** commands = parse_args(command, ";");
@@ -77,11 +86,8 @@ void run_command(char * command) {
         else if (strchr(commands[i], '<')) {
           printf("Redirect < Please\n");
         }
-        else if (execvp(args[0], args) == -1) {
-          if (strcmp(args[0], "cd")) {
-            printf("%s: command not found\n", args[0]);
-          }
-          free(args);
+        else {
+          fancy_exec(args);
           exit(0);
         }
       }

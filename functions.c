@@ -56,6 +56,41 @@ void fancy_exec(char ** args) {
   }
 }
 
+void pipe_func(char * command) {
+    char ** commands = parse_args(command, "|");
+    char * pipein = strip(commands[0]);
+    char * pipeinto = strip(commands[1]);
+    char currline[256];
+    char input[256];
+    FILE *read = popen(pipein, "r");
+    while(fgets(currline, 256, read)) {
+        currline[sizeof(currline) - 1] = '\0';
+        strcat(input, currline);
+    }
+    pclose(read);
+    FILE *write = popen(pipeinto, "w");
+    fprintf(write, "%s", input);
+    pclose(write);
+}
+
+void redirect_stdout(char * command) {
+    char ** commands = parse_args(command, ">");
+    int writefile = open(strip(commands[1]), O_CREAT | O_WRONLY, 0644);
+    dup2(writefile, STDOUT_FILENO);
+    char ** args = parse_args(strip(commands[0]), " ");
+    fancy_exec(args);
+    close(writefile);
+}
+
+void redirect_stdin(char * command) {
+    char ** commands = parse_args(command, "<");
+    int readfile = open(strip(commands[1]), O_RDONLY, 0644);
+    dup2(readfile, STDIN_FILENO);
+    char ** args = parse_args(strip(commands[0]), " ");
+    fancy_exec(args);
+    close(readfile);
+}
+
 void run_command(char * command) {
   command = strip(command);
   char ** commands = parse_args(command, ";");
@@ -63,7 +98,7 @@ void run_command(char * command) {
   for(i=0; commands[i] != NULL; i++) {
     commands[i] = strip(commands[i]);
     if (strchr(commands[i], '|')) {
-      printf("Pipe Please\n");
+      pipe_func(commands[i]);
     }
     else {
       char ** args;
@@ -81,10 +116,10 @@ void run_command(char * command) {
       int childPID = fork();
       if (!childPID) {
         if (strchr(commands[i], '>')) {
-          printf("Redirect > Please\n");
+          redirect_stdout(commands[i]);
         }
         else if (strchr(commands[i], '<')) {
-          printf("Redirect < Please\n");
+          redirect_stdin(commands[i]);
         }
         else {
           fancy_exec(args);

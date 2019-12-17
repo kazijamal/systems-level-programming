@@ -1,5 +1,23 @@
 # systems-work
 
+## Tuesday 12/17/19
+
+### semaphores
+- created by Edsger Dijkstra
+- IPC construct used to control access to a shared resource (like a file or shared memory)
+- most commonly, a semaphore is used as a counter representing how many processes can access a resource at a given time
+	- if a semaphore has a value of 3, then it can have 3 active "users"
+	- if a semaphore has a value of 0, then it is unavailable
+- most semaphore operations are "atomic", meaning they will not be split up into multiple processor instructions
+
+### semaphore operations
+- create a semaphore
+- set an initial value
+- remove a semaphore
+- Up(S) / V(S) - atomic
+	- release the sempahore to signal you are done with its associated resource
+	- pseudocode: S++
+
 ## Monday 12/16/19
 
 ### shared memory

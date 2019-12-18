@@ -1,5 +1,29 @@
 # systems-work
 
+## Wednesday 12/18/19
+
+### semaphores
+- created by Edsger Dijkstra
+- IPC construct used to control access to a shared resource (like a file or shared memory)
+- most commonly, a semaphore is used as a counter representing how many processes can access a resource at a given time
+	- if a semaphore has a value of 3, then it can have 3 active "users"
+	- if a semaphore has a value of 0, then it is unavailable
+- most semaphore operations are "atomic", meaning they will not be split up into multiple processor instructions
+
+### semaphore operations
+- create a semaphore
+- set an initial value
+- remove a semaphore
+- Up(S) / V(S) - atomic
+	- release the sempahore to signal you are done with its associated resource
+	- pseudocode
+		- `S++`
+- Down(S) / P(S) - atomic
+	- attempt to take the semaphore
+	- if the semaphore is 0, wait for it to be available
+	- pesudocode
+		- `while (S == 0) { block } S--;`
+
 ## Tuesday 12/17/19
 
 ```c
@@ -41,22 +65,6 @@ int main() {
 ### concurrency problems
 - several programs can used shared memories at the same time and you could delete data that another program is using
 - two concurrent programs can write to a file but two write processes might get mixed up in the processor, writing interweavedly
-
-### semaphores
-- created by Edsger Dijkstra
-- IPC construct used to control access to a shared resource (like a file or shared memory)
-- most commonly, a semaphore is used as a counter representing how many processes can access a resource at a given time
-	- if a semaphore has a value of 3, then it can have 3 active "users"
-	- if a semaphore has a value of 0, then it is unavailable
-- most semaphore operations are "atomic", meaning they will not be split up into multiple processor instructions
-
-### semaphore operations
-- create a semaphore
-- set an initial value
-- remove a semaphore
-- Up(S) / V(S) - atomic
-	- release the sempahore to signal you are done with its associated resource
-	- pseudocode: S++
 
 ## Monday 12/16/19
 

@@ -2,6 +2,46 @@
 
 ## Tuesday 12/17/19
 
+```c
+int main() {
+  int shmd;
+  char * data;
+  char input[3];
+  
+  shmd = shmget(KEY, SEG_SIZE, IPC_CREAT | 0644); //usually 0600
+  data = shmat(shmd, 0, 0);
+  
+  if(!(*data))
+    printf("New segment, no data to display\n");
+  else 
+    printf("Current contents: [%s]\n", data);
+  
+  printf("Would you like to modify the segment?(y/n) ");
+  fgets(input, 3, stdin);
+  
+  if(input[0] == 'y') {
+    printf("Enter new data: ");
+    fgets(data, SEG_SIZE, stdin);
+    *strchr(data, '\n') = 0;
+    printf("Current contents: [%s]\n", data);
+  }
+  
+  shmdt(data); // detach pointer from variable 
+  
+  printf("Would you like to remove the segment?(y/n) ");
+  fgets(input, 3, stdin);
+  
+  if(input[0] == 'y') {
+    shmctl(stmd, IPC_RMID, 0);
+    printf("segment deleted\n");
+  }
+}
+```
+
+### concurrency problems
+- several programs can used shared memories at the same time and you could delete data that another program is using
+- two concurrent programs can write to a file but two write processes might get mixed up in the processor, writing interweavedly
+
 ### semaphores
 - created by Edsger Dijkstra
 - IPC construct used to control access to a shared resource (like a file or shared memory)

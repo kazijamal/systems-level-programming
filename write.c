@@ -31,12 +31,12 @@ int main() {
   last = shmat(shmd, 0, 0);
   printf("Last addition: %s\n", last);
   printf("Your addition: ");
-  fgets(data, SEG_SIZE, stdin);
-  *strchr(data, '\n') = 0;
+  fgets(last, SEG_SIZE, stdin);
+  *strchr(last, '\n') = 0;
   int fd = open(filename, O_WRONLY | O_APPEND);
-  write(fd, data, SEG_SIZE);
+  write(fd, last, SEG_SIZE);
   close(fd);
-  shmdt(data);
+  shmdt(last);
   buff.sem_op = 1;
   semop(semd, &buff, 1); 
   return 0;

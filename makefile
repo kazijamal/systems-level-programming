@@ -12,6 +12,3 @@ clean:
 	rm write
 	rm control
 	rm *~
-
-memcheck:
-	valgrind --leak-check=yes ./control

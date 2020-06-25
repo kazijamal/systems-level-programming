@@ -1,3 +1,3 @@
 # systems-level-programming
 
-Repository for MKS65 Systems Level Programming at Stuyvesant High School
+Repository for MKS65C Systems Level Programming at Stuyvesant High School
